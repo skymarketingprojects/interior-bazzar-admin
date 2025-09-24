@@ -1,9 +1,23 @@
 import styles from "./Leads.module.css"
 import { LeadTable } from "../components"
+import useLeads from "./useLeads";
+import { Button, Input, SelectPrimitive } from "../../ui";
 const LeadDashboard = () => {
+    const { noOfUsers, searchText, handleChange } = useLeads();
     return (
         <>
-            <h2 className={`${styles.title}`}>Lead Details</h2>
+            <p className={`${styles.sectionPara}`}>Total no of users: <span>{noOfUsers}</span></p>
+            <div className={`${styles.filteresContainer}`}>
+                <SelectPrimitive
+                    // placeholder="Sort by"
+                    id="sortby"
+                    name="sortby"
+                    options={["All", "Active"]}
+                    onChange={handleChange}
+                />
+                <Input name="searchText" id="searchText" placeholder="Search" value={searchText} onChange={handleChange} />
+                <Button radius={true} variant="gradient">Search</Button>
+            </div>
             <LeadTable />
         </>
     )

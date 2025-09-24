@@ -23,12 +23,17 @@
 .table thead {
   border-radius: var(--radius-xs);
 }
-
+.table th {
+  border-right: 1px solid white;
+}
+.table th:last-child {
+  border-right: none;
+}
 .table th,
 .table td {
   padding: 12px;
-  text-align: left;
-  max-width: 250px;
+  text-align: center;
+  max-width: 100px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

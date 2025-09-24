@@ -43,18 +43,15 @@ export interface AdsQueryForm {
 
 export interface AdminLeadType {
   id: number;
+  date: string;
   name: string;
   phone: string;
   email: string;
-  interested: string;
-  query: string;
-  city: string;
-  state: string;
+  request: string;
+  detail: string;
   country: string;
-  status: StatusValueType;
-  tag: TagValueType;
-  remark: string;
-  priority: PriorityValueType;
+  city: string;
+  assigned: string;
 }
 
 export type AdminLeadFormType = Omit<AdminLeadType, "id"> & { id?: number };

@@ -5,7 +5,7 @@ import { AUTH_VARS } from "../../utils/constants/app";
 const initialState: AuthState = {
   [AUTH_VARS.ACCESS]: "",
   [AUTH_VARS.REFRESH]: "",
-  isAuthenticated: false,
+  isAuthenticated: true,
 };
 
 const authSlice = createSlice({

@@ -1,6 +1,8 @@
-.title {
+.sectionPara {
   font-weight: 600;
-  color: var(--text-theme-color);
-  font-size: var(--font-size-h3);
-  margin-bottom: var(--margin-xl);
+  font-size: var(--font-size-sm);
+}
+.filteresContainer {
+  gap: 1rem;
+  display: flex;
 }

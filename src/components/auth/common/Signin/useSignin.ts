@@ -6,13 +6,14 @@ import { setAuth } from "../../../../redux/slice/authSlice";
 import { useAlert } from "../../../../context/AlertContext";
 import { AUTH_VARS, PAGES } from "../../../../utils/constants/app";
 import { setUser } from "../../../../redux/slice/userSlice";
-import { useAppDispatch } from "../../../../redux/store/hook";
+import { useAppDispatch, useAppSelector } from "../../../../redux/store/hook";
 import { TokenService } from "../../../../api/apiService/authHelper/TokenService";
 import { useNavigate } from "react-router-dom";
 const useSignin = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { showAlert } = useAlert();
+  const { isAuthenticated } = useAppSelector((state) => state.auth);
   const [formdata, setFormdata] = useState<{
     username: string;
     password: string;

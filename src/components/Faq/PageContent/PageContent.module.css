@@ -1,0 +1,18 @@
+/* PageContent.module.css */
+.pageContainer {
+  padding: var(--padding-lg) var(--padding-xl);
+}
+
+.pageContainer h1,
+.pageContainer h2,
+.pageContainer h3,
+.pageContainer h4,
+.pageContainer h5,
+.pageContainer h6 {
+  color: var(--text-theme-color) !important;
+  line-height: 1.2 !important;
+}
+
+.pageContainer strong {
+  color: var(--text-theme-color) !important;
+}

@@ -1,0 +1,36 @@
+.planContainer {
+  display: grid;
+}
+.bottomContent {
+  display: grid;
+  gap: calc(1.5 * var(--gap-xxl));
+}
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  margin: calc(2 * var(--margin-xxl)) 0;
+}
+.active {
+  color: var(--text-white-color);
+  background-color: var(--bg-theme-color);
+}
+.btn {
+  width: 200px;
+  padding: var(--padding-lg) 0;
+  border: 1px solid var(--text-theme-color);
+}
+.btn.left {
+  border-radius: var(--radius-xs) 0 0 var(--radius-xs);
+}
+.btn.right {
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+}
+
+.cardContainer {
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-lg);
+  /* justify-content: space-between; */
+  width: var(--max-width-container);
+}

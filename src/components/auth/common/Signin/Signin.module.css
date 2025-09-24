@@ -1,0 +1,75 @@
+.card {
+  padding: var(--padding-xxl);
+  border-radius: var(--radius-lg);
+  /* border: 1px solid #e5e5e5; */
+  background: var(--bg-primary-color);
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 1); */
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--text-theme-color);
+  font-size: calc(2 * var(--font-size-base));
+}
+
+.form {
+  display: flex;
+  gap: var(--gap-xl);
+  flex-direction: column;
+}
+
+.radioGroup {
+  margin-top: 1rem;
+}
+
+.radioLabel {
+  display: block;
+  font-weight: 600;
+  color: var(--text-theme-color);
+  margin-bottom: var(--margin-lg);
+}
+
+.options {
+  display: flex;
+  gap: calc(2 * var(--gap-lg));
+  margin-top: var(--margin-lg);
+}
+
+.options label {
+  font-size: 1rem;
+  color: var(--text-dark-color);
+}
+.input {
+  width: 400px;
+}
+
+.button {
+  border-radius: var(--radius-xs);
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+.forgotPasswordLink {
+  font-size: var(--font-size-xs);
+  color: var(--text-theme-color);
+  text-align: center;
+}
+.footerText {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #555;
+}
+
+.footerText a {
+  /* color: #2e7d32; */
+  color: var(--text-theme-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footerText a:hover {
+  text-decoration: underline;
+}

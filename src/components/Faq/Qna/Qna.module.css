@@ -1,0 +1,5 @@
+.qnaContainer {
+  display: grid;
+  gap: var(--gap-xxl);
+  margin: var(--margin-xxl) auto;
+}

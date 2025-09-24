@@ -1,0 +1,18 @@
+.searchContainer {
+  margin: auto;
+  display: flex;
+  padding: 0 var(--padding-xs);
+  margin: calc(var(--margin-xxl) * 1) auto;
+  border-radius: var(--radius-xs);
+  background-color: var(--bg-section-color);
+  border: 2px solid var(--border-light-color);
+  max-width: calc(var(--max-width-container) / 2);
+}
+.searchInput {
+  border: none;
+  height: 45px;
+  outline: none;
+}
+.searchIcon {
+  font-size: var(--font-size-h3);
+}

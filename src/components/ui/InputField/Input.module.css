@@ -1,0 +1,77 @@
+.input {
+  width: 100%;
+  padding: var(--padding-lg);
+  display: block;
+  margin: 0px auto;
+  border-radius: var(--radius-xs);
+  font-size: var(--font-size-base);
+  border: 1px solid var(--border-light-color);
+  outline: none;
+}
+.input:focus {
+  border-color: var(--bg-black-color);
+  outline: none;
+}
+.input:disabled {
+  cursor: not-allowed;
+  background-color: var(--bg-section-color);
+}
+
+.passwordContainer {
+  position: relative;
+}
+.eyeIcon {
+  position: absolute;
+  right: var(--padding-xs);
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.selectWrapper {
+  flex-grow: 1;
+  position: relative;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-light-color);
+}
+
+.select {
+  outline: none;
+  appearance: none;
+  position: inherit;
+  border: none;
+  padding: var(--padding-lg) 0;
+  padding-left: var(--padding-xs);
+  border-radius: var(--radius-xs);
+}
+.select:focus {
+  border: none;
+  outline: none;
+  position: inherit;
+}
+
+.angleDown {
+  top: 50%;
+  font-weight: 600;
+  position: absolute;
+  right: var(--padding-xxl);
+  transform: translateY(-50%);
+  color: var(--text-black-color);
+  font-size: var(--font-size-body);
+}
+
+.option {
+  color: var(--text-black-color);
+  background-color: var(--bg-primary-color);
+}
+
+.textarea {
+  height: 100px;
+  width: 100%;
+  padding: var(--padding-lg);
+  display: block;
+  margin: 0px auto;
+  border-radius: var(--radius-xs);
+  font-size: var(--font-size-base);
+  border: 1px solid var(--border-light-color);
+  outline: none;
+}

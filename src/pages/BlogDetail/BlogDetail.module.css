@@ -1,0 +1,5 @@
+.mainContainer {
+  display: grid;
+  gap: var(--gap-xxl);
+  padding: var(--padding-lg) 0;
+}

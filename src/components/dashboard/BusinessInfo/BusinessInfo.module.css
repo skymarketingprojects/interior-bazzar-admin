@@ -1,0 +1,66 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xl);
+}
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.title {
+  font-weight: 600;
+  color: var(--text-theme-color);
+  font-size: var(--font-size-h3);
+  margin-bottom: var(--margin-xl);
+}
+.uploadIconContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--gap-lg);
+}
+.form {
+  display: grid;
+  gap: var(--gap-lg);
+}
+.uploadBox {
+  cursor: pointer;
+  height: 200px;
+  display: flex;
+  aspect-ratio: 2/1;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-light-color);
+}
+.businessCoverContainer {
+  cursor: pointer;
+  height: 200px;
+  display: flex;
+  aspect-ratio: 2/1;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: var(--radius-xl);
+  /* border: 1px solid var(--border-light-color); */
+}
+.businessCover {
+  width: 100%;
+  aspect-ratio: 2/1;
+  height: 200px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-light-color);
+  object-fit: cover;
+}
+.uploadIcon {
+  width: 50px;
+  height: 50px;
+}
+.uploadText {
+  color: var(--text-light-color);
+}
+.saveButton {
+  height: fit-content;
+}

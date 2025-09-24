@@ -1,0 +1,56 @@
+.card {
+  padding: var(--padding-xxl);
+  border-radius: var(--radius-lg);
+  /* border: 1px solid #e5e5e5; */
+  background: var(--bg-primary-color);
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 1); */
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--text-theme-color);
+  font-size: calc(2 * var(--font-size-base));
+}
+
+.form {
+  display: flex;
+  gap: var(--gap-xl);
+  flex-direction: column;
+}
+.inputsContainer {
+  display: flex;
+  gap: var(--gap-lg);
+  justify-content: space-between;
+}
+
+.options {
+  display: flex;
+  gap: calc(2 * var(--gap-lg));
+  margin-top: var(--margin-lg);
+}
+
+.options label {
+  font-size: 1rem;
+  color: var(--text-dark-color);
+}
+
+.input {
+  width: 100%;
+}
+.inputHalf {
+  /* width: 180px; */
+}
+.button {
+  border-radius: var(--radius-xs);
+}
+.buttonContainer {
+  display: flex;
+  gap: var(--gap-lg);
+  margin-top: var(--margin-xxs);
+  justify-content: center;
+}
+.navButton {
+  text-decoration: underline;
+  color: var(--text-light-color);
+}

@@ -1,0 +1,119 @@
+.card {
+  padding: var(--padding-xxl);
+  border-radius: var(--radius-lg);
+  /* border: 1px solid #e5e5e5; */
+  background: var(--bg-primary-color);
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 1); */
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--text-theme-color);
+  font-size: calc(2 * var(--font-size-base));
+}
+
+.form {
+  display: flex;
+  gap: var(--gap-xl);
+  flex-direction: column;
+}
+.uploadContainer {
+  position: relative;
+  cursor: pointer;
+  width: 115px;
+  margin: auto;
+  padding: 5px;
+  height: 115px;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: var(--margin-lg);
+  border: 1px solid var(--border-light-color);
+}
+.uploadImage {
+  padding: 10px;
+  height: 70%;
+  width: 70%;
+  object-fit: cover;
+  position: relative;
+}
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.progressOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* dark overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 50%;
+}
+
+.uploadText {
+  font-size: var(--font-size-xxs);
+  line-height: 1;
+}
+.radioGroup {
+  margin-top: 1rem;
+}
+
+.radioLabel {
+  display: block;
+  font-weight: 600;
+  color: var(--text-theme-color);
+  margin-bottom: var(--margin-lg);
+}
+
+.options {
+  display: flex;
+  gap: calc(2 * var(--gap-lg));
+  margin-top: var(--margin-lg);
+}
+
+.options label {
+  font-size: 1rem;
+  color: var(--text-dark-color);
+}
+
+.input {
+  width: 400px;
+}
+
+.button {
+  border-radius: var(--radius-xs);
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.footerText {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #555;
+}
+
+.footerText a {
+  color: #2e7d32;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footerText a:hover {
+  text-decoration: underline;
+}

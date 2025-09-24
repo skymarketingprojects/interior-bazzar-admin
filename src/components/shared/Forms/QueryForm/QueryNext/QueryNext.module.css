@@ -1,0 +1,32 @@
+.mainContainer {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr;
+}
+.image {
+  height: 30vw;
+}
+.title {
+  font-weight: 500;
+  color: var(--text-theme-color);
+}
+.form {
+  width: 400px;
+  display: grid;
+  gap: var(--gap-lg);
+}
+.inputSection {
+  display: grid;
+  gap: var(--gap-xs);
+}
+.inputTitle {
+  line-height: 1;
+  font-weight: 500;
+  color: var(--text-theme-color);
+}
+.inputContainer {
+  display: flex;
+  gap: var(--gap-xs);
+}

@@ -1,0 +1,84 @@
+.headerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-theme-dark);
+}
+.headerContainer {
+  width: 100%;
+  display: flex;
+  margin: 0px auto;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--padding-lg);
+  max-width: var(--max-width-container);
+}
+.logoContainer {
+  padding: 0px var(--padding-lg);
+}
+.logo {
+  height: 70px;
+}
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.getBestPlanButton {
+  color: var(--text-dark-color);
+  border-radius: var(--radius-xxl);
+  background-color: var(--bg-primary-color);
+  padding: var(--padding-xs) var(--padding-xxl);
+}
+
+.navLinksContainer {
+  display: flex;
+  gap: var(--gap-lg);
+  margin: 0px var(--margin-xl);
+}
+
+.navLinks {
+}
+
+.navLinkBase {
+  color: var(--text-white-color);
+  padding: var(--padding-md) var(--padding-xxs);
+}
+
+.activeNavLink {
+  font-weight: 500;
+  color: var(--text-white-color);
+}
+
+.adminDashboard {
+  color: var(--text-white-color);
+  font-size: var(--font-size-base);
+  background-color: var(--bg-black-color);
+  padding: var(--padding-md) var(--padding-lg);
+}
+
+.freeTrial {
+  color: var(--text-white-color);
+  font-size: var(--font-size-base);
+  border-radius: var(--standard-radius);
+  background-color: var(--bg-black-color);
+  padding: var(--padding-md) var(--padding-xxl);
+}
+.userAvatar {
+  width: 50px;
+  height: 50px;
+  margin: auto 0;
+  border-radius: 50%;
+}
+.hamburgerContainer {
+  display: none;
+}
+@media (max-width: var(--bp-md)) {
+  .hamburgerContainer {
+    display: flex;
+    border: 2px solid red;
+  }
+  .getBestPlanButton {
+    display: none;
+  }
+}

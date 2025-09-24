@@ -1,0 +1,27 @@
+.container {
+  display: grid;
+  gap: var(--gap-xxl);
+}
+.title {
+  color: var(--text-theme-color);
+}
+.topSellerContainer {
+  display: flex;
+  gap: var(--gap-xl);
+  overflow: auto hidden;
+  justify-content: flex-start;
+  padding: var(--padding-lg) 0;
+}
+.topSellerContainer div {
+  flex: 0 0 auto;
+}
+
+.description {
+  text-align: center;
+  margin: calc(2 * var(--margin-xxl)) auto;
+  color: var(--text-light-color);
+}
+.businessSection {
+  display: grid;
+  gap: var(--gap-xl);
+}

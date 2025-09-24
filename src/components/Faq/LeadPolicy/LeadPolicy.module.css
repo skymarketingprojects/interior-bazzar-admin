@@ -1,0 +1,16 @@
+.leadPolicy {
+  padding: var(--padding-lg) var(--padding-xl);
+}
+.leadPolicy h1,
+.leadPolicy h2,
+.leadPolicy h3,
+.leadPolicy h4,
+.leadPolicy h5,
+.leadPolicy h6 {
+  color: var(--text-theme-color) !important;
+  line-height: 1.2 !important;
+}
+
+.leadPolicy strong {
+  color: var(--text-theme-color) !important;
+}

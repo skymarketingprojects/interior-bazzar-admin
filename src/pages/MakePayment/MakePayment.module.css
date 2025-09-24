@@ -1,0 +1,136 @@
+.wrapper {
+  background-color: var(--bg-section-color);
+}
+.container {
+  padding: var(--padding-xxl);
+  color: var(--text-black-color);
+}
+
+.banner {
+  text-align: center;
+  padding: var(--padding-md);
+  background: var(--bg-theme-color);
+}
+
+.banner p {
+  color: var(--text-white-color);
+}
+.session {
+  text-align: center;
+  margin: var(--margin-lg) 0;
+}
+
+.sessionTitle {
+  color: red;
+  font-size: var(--font-size-h5);
+}
+
+.timer {
+  font-size: var(--font-size-body-lg);
+  font-weight: bold;
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap-lg);
+  grid-template-columns: 1.5fr 1fr;
+}
+
+.formCard {
+  padding: var(--padding-xl);
+  border-radius: var(--radius-sm);
+  background: var(--bg-primary-color);
+}
+
+.heading {
+  color: var(--color-brand-dark);
+  font-size: var(--font-size-h5);
+  margin-bottom: var(--margin-md);
+}
+.form {
+  display: grid;
+  gap: 10px 0px;
+}
+.input {
+  background-color: var(--bg-section-color);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-sm);
+}
+
+.upload {
+  border: 1px dashed #aaa;
+  padding: var(--padding-lg);
+  text-align: center;
+  border-radius: var(--radius-xs);
+  margin-bottom: var(--margin-md);
+  cursor: pointer;
+}
+
+.submitBtn {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  padding: var(--padding-md);
+  color: var(--text-white-color);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  background: var(--bg-theme-color);
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+}
+
+.orderCard,
+.bankCard {
+  padding: var(--padding-xl);
+  border-radius: var(--radius-sm);
+  background: var(--bg-section-color);
+}
+
+.orderCard h4 {
+  text-align: left;
+  font-size: var(--font-size-h5);
+}
+.bankCard h4 {
+  text-align: center;
+  font-size: var(--font-size-h5);
+}
+.tableRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.tableRow th {
+  text-align: left;
+}
+.note {
+  margin-top: var(--margin-xxl);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  gap: var(--gap-xl);
+  margin-top: var(--margin-xxl);
+}
+
+.contactItem {
+  padding: var(--padding-sm);
+  font-weight: bold;
+}
+
+.link {
+  text-align: center;
+  margin-top: var(--margin-md);
+  color: var(--color-brand-primary);
+  text-decoration: underline;
+  cursor: pointer;
+}

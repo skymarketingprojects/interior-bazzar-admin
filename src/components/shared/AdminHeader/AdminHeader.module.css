@@ -1,0 +1,129 @@
+.headerWrapper {
+  background-color: var(--bg-primary-color);
+  height: 120px;
+  border-bottom: 1px solid var(--color-border-dark);
+  box-shadow: 10px 4px 12px 10px rgba(0, 0, 0, 1);
+}
+.headerContainer {
+  display: flex;
+  align-items: center;
+  padding: var(--padding-xxl);
+  justify-content: space-between;
+  /* max-width: var(--max-width-container); */
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.watchText {
+  font-weight: bold;
+  font-size: var(--font-size-h4);
+}
+
+.middleSection {
+  height: 100%;
+  display: flex;
+  min-width: 300px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-section-color);
+}
+
+.middleText {
+  line-height: 1;
+  text-align: center;
+  padding: var(--padding-xl) 0;
+  color: var(--text-black-color);
+  font-size: var(--font-size-body-lg);
+}
+
+.boldText {
+  display: block;
+  font-size: var(--font-size-h4);
+  color: var(--text-black-color);
+}
+
+.playIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.playIconImg {
+  top: 50%;
+  left: 50%;
+  opacity: 0.8;
+  font-size: 40px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.teacherPng {
+  height: 60px;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* .upgradeBtn {
+  background: linear-gradient(135deg, #6e7eff, #9b4bfc);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upgradeBtn:hover {
+  background: linear-gradient(135deg, #9b4bfc, #6e7eff);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+} */
+
+.upgradeBtn {
+  padding: 12px 32px;
+  border: none;
+  border-radius: 999px; /* pill shape */
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #ff00cc, #333333, #00ccff) border-box,
+    linear-gradient(to bottom, #0f172a, #1f2937) padding-box;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.userIcon {
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userAvatar {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.bellIconImg {
+  color: var(--text-light-color);
+  font-size: 40px;
+}
+
+.header {
+  height: 120px;
+  border-bottom: 1px solid var(--color-border-dark);
+  box-shadow: 10px 4px 12px 10px rgba(0, 0, 0, 1);
+}

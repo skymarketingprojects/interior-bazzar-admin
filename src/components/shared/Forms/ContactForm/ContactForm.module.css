@@ -1,0 +1,19 @@
+.formContainer {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 400px;
+  padding: calc(2 * var(--padding-xl));
+  background-color: var(--bg-white-color);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.title {
+  font-weight: 500;
+  color: var(--text-theme-color);
+  font-size: var(--font-size-h5);
+}
+.form {
+  display: flex;
+  gap: var(--gap-xxl);
+  flex-direction: column;
+}

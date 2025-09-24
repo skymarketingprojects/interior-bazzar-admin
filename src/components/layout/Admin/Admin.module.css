@@ -1,0 +1,110 @@
+.adminWrapper {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebarContainer {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.headerContainer {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+
+  background-color: var(--bg-section-color);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navItemContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: auto;
+  gap: var(--space-xs);
+  padding: var(--padding-lg) 0;
+  background-color: var(--bg-primary-color);
+}
+.breadcrumStripContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--padding-lg) 0;
+}
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: var(--margin-md) var(--margin-md);
+}
+
+.content {
+  flex: 1;
+  width: 100%;
+  padding: 1rem;
+  overflow-y: auto;
+  margin: auto auto;
+  /* max-width: var(--max-width-container); this needs to be improved*/
+}
+
+.btnContainer {
+  display: flex;
+  gap: var(--gap-xl);
+  align-items: center;
+  margin-right: var(--margin-xxl);
+}
+.saveBtn {
+  display: flex;
+  margin-left: auto;
+  gap: var(--margin-xs);
+  color: var(--text-white-color);
+  background-color: var(--bg-black-color);
+  padding: var(--padding-xs) var(--padding-xxl);
+}
+
+/* temp */
+.toggleBtnContainer {
+  display: flex;
+  justify-content: center;
+  border-radius: 25px;
+  border: 1px solid var(--border-light-color);
+}
+.toggleBtn {
+  padding: 5px 20px;
+  border-radius: 20px;
+}
+.active {
+  color: var(--text-white-color);
+  background-color: green;
+}
+.inactive {
+  color: var(--text-white-color);
+  background-color: red;
+}
+/* select input field */
+/* .selectContainer {
+} */
+.select {
+  padding: 0;
+  margin: 0;
+}
+
+.tabSwitchContainer {
+  display: flex;
+  justify-content: flex-start;
+  gap: var(--gap-xl);
+  margin: 0 var(--margin-md);
+}
+.tab {
+  cursor: pointer;
+  color: var(--text-light-color);
+}
+.activeTab {
+  color: var(--text-black-color);
+}

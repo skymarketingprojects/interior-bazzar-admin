@@ -4,13 +4,10 @@ import {
   SpreadSheetEditIcon,
 } from "../../ui/Icons/SVG";
 import { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { PAGES } from "../../../utils/constants/app";
 import type { Sidebarlink } from "../../../types/global";
 
 const useAdmin = () => {
-  const navigate = useNavigate();
-
   const [sidebarLinks] = useState<Sidebarlink[]>([
     {
       label: "Leads",
@@ -32,7 +29,7 @@ const useAdmin = () => {
     },
   ]);
 
-  const { activeLink, activeSubLink, currentMainLink } = useMemo(() => {
+  const { activeLink } = useMemo(() => {
     let activeLink = "";
     let activeSubLink = "";
     let currentMainLink = undefined;
@@ -52,31 +49,17 @@ const useAdmin = () => {
     return { activeLink, activeSubLink, currentMainLink };
   }, [location.pathname]);
 
-  const handlelinkClick = (_mainUrl: string, subUrl: string) => {
-    navigate(subUrl);
-  };
-
   const [sideBarOpen, setSidebarOpen] = useState(true);
-  const [notificationOpen, setNotificationOpen] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sideBarOpen);
-  };
-
-  const toggleNotification = () => {
-    setNotificationOpen(!notificationOpen);
   };
 
   return {
     activeLink,
     sideBarOpen,
     sidebarLinks,
-    activeSubLink,
-    currentMainLink,
-    notificationOpen,
     toggleSidebar,
-    handlelinkClick,
-    toggleNotification,
   };
 };
 export default useAdmin;

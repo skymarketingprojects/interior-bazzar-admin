@@ -15,7 +15,6 @@ const SignInPage = () => {
                     <div className={`${styles.imageContainer}`}>
                         <img src={image} alt="signin" className={`${styles.image}`} />
                     </div>
-
                 </div>
                 <div className={`${styles.signupRight}`}>
                     <h3 className={`${styles.signupHeading}`}>Sign In</h3>

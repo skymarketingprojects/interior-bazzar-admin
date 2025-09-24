@@ -16,11 +16,9 @@ const useSignin = () => {
   const [formdata, setFormdata] = useState<{
     username: string;
     password: string;
-    confirmPassword: string;
   }>({
     username: "",
     password: "",
-    confirmPassword: "",
   });
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -55,12 +53,11 @@ const useSignin = () => {
       if (typeof access !== "string" || typeof refresh !== "string") {
         return;
       }
-
       TokenService.setTokens(access, refresh);
       dispatch(setUser(res.data.user));
       dispatch(setAuth({ isAuthenticated: true }));
       showAlert(res.message, "success");
-      navigate(PAGES.DASHBOARD);
+      navigate(PAGES.ADMIN_LEADS);
     } catch (e) {
       showAlert("Error signing in", "error");
       logger.error("Error while signing in: ", e);

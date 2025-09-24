@@ -8,7 +8,6 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
     sideBarOpen,
     sidebarLinks,
     toggleSidebar,
-    handlelinkClick,
   } = useAdmin();
 
   return (
@@ -19,7 +18,6 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
           activeLink={activeLink}
           sidebarOpen={sideBarOpen}
           toggleSidebar={toggleSidebar}
-          handlelinkClick={handlelinkClick}
         />
       </div>
       <div className={`${styles.headerContainer}`}>

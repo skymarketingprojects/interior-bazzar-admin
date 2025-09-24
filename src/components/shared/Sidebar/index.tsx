@@ -12,7 +12,6 @@ const Sidebar = ({
   toggleSidebar,
 }: {
   links: Sidebarlink[];
-  handlelinkClick: (activelink: string, activeSublink: string) => void;
   activeLink: string;
   sidebarOpen: boolean;
   toggleSidebar: () => void;

@@ -4,7 +4,14 @@ import { useModal } from "../../../../../context/ModalContext";
 import type { AdminLeadType } from "../../../../../types/content";
 import AssignLead from "../../AssignLead";
 const LeadTable = () => {
-    const { loading, leads, incrementPage } = useLeadTable();
+    const { loading,
+        leads,
+        pageSize,
+        incrementPage,
+        pageNo,
+        totalPages,
+        setPageNo,
+        hasNext, } = useLeadTable();
     const { showModal } = useModal();
     const handleAssignClick = (lead: AdminLeadType) => {
         showModal(<AssignLead lead={lead} />)
@@ -32,7 +39,12 @@ const LeadTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {loading ? "loading" : leads.map((lead) => (
+                    {loading ? Array.from({ length: pageSize }).map((_, i) => <tr key={i}>
+                        <td colSpan={10}>
+                            loaidn....
+
+                        </td>
+                    </tr>) : leads.map((lead) => (
                         <tr key={lead.id}>
                             <td>{renderValue(lead.date)}</td>
                             <td>{renderValue(lead.name)}</td>
@@ -59,6 +71,34 @@ const LeadTable = () => {
 
                 </tbody>
             </table>
+            <div className={styles.pagination}>
+                <button
+                    disabled={pageNo === 1}
+                    onClick={() => setPageNo((prev) => prev - 1)}
+                >
+                    Prev
+                </button>
+
+                {[...Array(totalPages)].map((_, i) => {
+                    const page = i + 1;
+                    return (
+                        <button
+                            key={page}
+                            className={pageNo === page ? styles.activePage : ""}
+                            onClick={() => setPageNo(page)}
+                        >
+                            {page}
+                        </button>
+                    );
+                })}
+
+                <button
+                    disabled={!hasNext}
+                    onClick={incrementPage}
+                >
+                    Next
+                </button>
+            </div>
         </div>
     );
 };

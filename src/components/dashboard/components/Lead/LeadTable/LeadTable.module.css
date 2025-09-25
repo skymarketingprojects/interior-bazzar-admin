@@ -100,3 +100,33 @@ table td {
 .high {
   background-color: var(--color-high);
 }
+
+.pagination {
+  width: 100%;
+  gap: 8px;
+  display: flex;
+  margin-top: 16px;
+  justify-content: center; /* center instead of flex-end */
+  flex-wrap: wrap; /* wrap instead of overflow */
+}
+
+.pagination button {
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+
+  transition: all 0.2s ease;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.activePage {
+  color: #fff;
+  background: var(--bg-theme-color);
+  border-color: var(--bg-theme-color);
+  font-weight: bold;
+}

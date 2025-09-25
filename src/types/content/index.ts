@@ -52,7 +52,7 @@ export interface AdminLeadType {
 export interface GetPaginatedAdminLeadsType {
   pageNo: number;
   hasNext: boolean;
-  totalPage: number;
+  totalPages: number;
   leads: AdminLeadType[];
 }
 

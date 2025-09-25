@@ -11,9 +11,9 @@ import type {
 } from "../../../types/content";
 
 export class AdminService {
-  static async fetchLeads(pageNo: number) {
+  static async fetchLeads(pageNo: number, pageSize: number) {
     try {
-      const url = `${appUrl.admin}/query/${pageNo}/`;
+      const url = `${appUrl.admin}/query/${pageNo}/${pageSize}/`;
       const response: ApiResponseType<GetPaginatedAdminLeadsType> =
         await apiService.getGetApiResponse(url);
       return response;

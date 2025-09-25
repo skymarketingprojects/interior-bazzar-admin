@@ -13,19 +13,20 @@ const useLeadTable = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [leads, setLeads] = useState<AdminLeadType[]>([]);
   const [pageNo, setPageNo] = useState<number>(1);
-  const [totalPages, setTotalPages] = useState<number>(1);
   const [hasNext, setHasNext] = useState<boolean>(false);
+  const [totalPages, setTotalPages] = useState<number>(1);
+  const [pageSize, setPageSize] = useState<number>(20);
 
   const fetchLeads = async () => {
     try {
       setLoading(true);
-      const res = await AdminService.fetchLeads(pageNo);
+      const res = await AdminService.fetchLeads(pageNo, pageSize);
       if (!res.response) {
         logger.error("Failed to fetch leads");
         return;
       }
       setLeads(res.data.leads);
-      setTotalPages(res.data.totalPage);
+      setTotalPages(res.data.totalPages);
       setHasNext(res.data.hasNext);
     } catch (e) {
       logger.error("Error while fetching leads: ", e);
@@ -65,7 +66,7 @@ const useLeadTable = () => {
 
   useEffect(() => {
     fetchLeads();
-  }, []);
+  }, [pageNo]);
   const incrementPage = () => {
     if (pageNo < totalPages) {
       setPageNo((prev) => prev + 1);
@@ -77,6 +78,11 @@ const useLeadTable = () => {
     incrementPage,
     loading,
     updateLead,
+    pageSize,
+    pageNo,
+    totalPages,
+    setPageNo,
+    hasNext,
   };
 };
 

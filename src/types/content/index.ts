@@ -1,8 +1,3 @@
-import type {
-  TagValueType,
-  StatusValueType,
-  PriorityValueType,
-} from "../../utils/constants/app";
 export interface PlanType {
   id: number;
   name: string;
@@ -47,11 +42,18 @@ export interface AdminLeadType {
   name: string;
   phone: string;
   email: string;
-  request: string;
-  detail: string;
+  interested: string;
+  query: string;
   country: string;
   city: string;
   assigned: string;
+}
+
+export interface GetPaginatedAdminLeadsType {
+  pageNo: number;
+  hasNext: boolean;
+  totalPage: number;
+  leads: AdminLeadType[];
 }
 
 export type AdminLeadFormType = Omit<AdminLeadType, "id"> & { id?: number };

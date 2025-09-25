@@ -1,28 +1,19 @@
 import useLeadTable from "./useLeadTable";
 import styles from "./LeadTable.module.css";
-import { Button } from "../../../../ui";
-import LeadForm from "../LeadForm";
 import { useModal } from "../../../../../context/ModalContext";
 import type { AdminLeadType } from "../../../../../types/content";
-import { getLabelByValue } from "../helper";
-import { STATUS, TAGS, PRIORITIES } from "../../../../../utils/constants/app";
-import { logger } from "../../../../../utils/logger";
 import AssignLead from "../../AssignLead";
 const LeadTable = () => {
-    const { leads, loading, updateLead } = useLeadTable();
+    const { loading, leads, incrementPage } = useLeadTable();
     const { showModal } = useModal();
     const handleAssignClick = (lead: AdminLeadType) => {
         showModal(<AssignLead lead={lead} />)
     };
-    // if (loading) return <p>Loading...</p>
-    // if (!leads.length) {
+    const renderValue = (value: string | null | undefined) => {
+        if (!value) return "--";
+        return value;
+    };
 
-    //     return (
-    //         <div className={styles.wrapper}>
-    //             <p>No leads found</p>
-    //         </div>
-    //     )
-    // }
     return (
         <div className={styles.wrapper}>
             <table className={styles.table}>
@@ -32,8 +23,8 @@ const LeadTable = () => {
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Mail</th>
-                        <th>Request</th>
-                        <th>Detail</th>
+                        <th>Interested</th>
+                        <th>Query</th>
                         <th>Country</th>
                         <th>City</th>
                         <th>Assigned</th>
@@ -41,21 +32,21 @@ const LeadTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {leads.map((lead) => (
+                    {loading ? "loading" : leads.map((lead) => (
                         <tr key={lead.id}>
-                            <td>{lead.date}</td>
-                            <td>{lead.name}</td>
-                            <td>{lead.phone}</td>
-                            <td>{lead.email}</td>
+                            <td>{renderValue(lead.date)}</td>
+                            <td>{renderValue(lead.name)}</td>
+                            <td>{renderValue(lead.phone)}</td>
+                            <td>{renderValue(lead.email)}</td>
                             <td>
-                                {lead.request}
+                                {renderValue(lead.interested)}
                             </td>
-                            <td>{lead.detail}</td>
+                            <td>{renderValue(lead.query)}</td>
                             <td>
-                                {lead.country}
+                                {renderValue(lead.country)}
                             </td>
                             <td>
-                                {lead.city}
+                                {renderValue(lead.city)}
                             </td>
                             <td>
 

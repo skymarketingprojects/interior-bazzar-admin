@@ -3,7 +3,6 @@ import useLogout from "./useLogout";
 import { logger } from "../../utils/logger";
 import type { BaseUser } from "../../types/global";
 import { UserService } from "../../api/modules/user";
-import { setUser } from "../../redux/slice/userSlice";
 import { setAuth } from "../../redux/slice/authSlice";
 import type { ApiResponseType } from "../../types/reqResType";
 import { useAppDispatch, useAppSelector } from "../../redux/store/hook";
@@ -34,9 +33,7 @@ const useInitUser = () => {
         logout();
         return;
       }
-      // dispatch(setUser(res.data));
       dispatch(setAuth({ isAuthenticated: true }));
-      // logger.info("Logged in user fetched successfully");
     } catch (error) {
       logout();
       logger.error("Error happen while fetching user", error);

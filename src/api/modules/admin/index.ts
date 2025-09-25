@@ -5,9 +5,23 @@ import type {
   BusinessSearchResType,
 } from "../../../types/reqResType";
 import { logger } from "../../../utils/logger";
-import type { BusinessType } from "../../../types/content";
+import type {
+  BusinessType,
+  GetPaginatedAdminLeadsType,
+} from "../../../types/content";
 
 export class AdminService {
+  static async fetchLeads(pageNo: number) {
+    try {
+      const url = `${appUrl.admin}/query/${pageNo}/`;
+      const response: ApiResponseType<GetPaginatedAdminLeadsType> =
+        await apiService.getGetApiResponse(url);
+      return response;
+    } catch (error) {
+      logger.error("Error fetching leads:", error);
+      throw error;
+    }
+  }
   static async getSearchedBusinesses(query: string, signal?: AbortSignal) {
     try {
       const url = `${appUrl.admin}/business/search/${encodeURIComponent(

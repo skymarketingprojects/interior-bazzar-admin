@@ -16,24 +16,24 @@ const useInitUser = () => {
   const { isAuthenticated } = auth;
 
   const fetchUser = async () => {
-    // if (isAuthenticated) {
-    //   setLoading(false);
-    //   return;
-    // }
-    // const access = TokenService.getAccessToken();
-    // if (!access) {
-    //   logout();
-    //   setLoading(false);
-    //   return;
-    // }
+    if (isAuthenticated) {
+      setLoading(false);
+      return;
+    }
+    const access = TokenService.getAccessToken();
+    if (!access) {
+      logout();
+      setLoading(false);
+      return;
+    }
     try {
       setLoading(true);
-      // const res: ApiResponseType<BaseUser> =
-      //   await UserService.getLoggedInUser();
-      // if (!res.response) {
-      //   logout();
-      //   return;
-      // }
+      const res: ApiResponseType<BaseUser> =
+        await UserService.getLoggedInUser();
+      if (!res.response) {
+        logout();
+        return;
+      }
       // dispatch(setUser(res.data));
       dispatch(setAuth({ isAuthenticated: true }));
       // logger.info("Logged in user fetched successfully");

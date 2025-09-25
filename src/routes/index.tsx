@@ -12,6 +12,7 @@ import useInitUser from "../hooks/auth/useInitUser";
 import ScrollToTop from "../components/shared/ScrollToTop";
 import ProtectedRoute from "./ProtectedRoutes";
 import PublicRoute from "./PublicRoutes";
+import AdminLoader from "../components/shared/AdminLoader";
 
 const UserRoutes = () => {
   const { loading } = useInitUser();
@@ -72,7 +73,9 @@ const UserRoutes = () => {
     ));
 
   if (loading) {
-    return <div className="flex h-screen items-center justify-center">Loading...</div>;
+    return (
+      <AdminLoader />
+    )
   }
 
   return (

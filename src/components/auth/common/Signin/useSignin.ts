@@ -39,10 +39,10 @@ const useSignin = () => {
       showAlert("Invalid username", "warning");
       return;
     }
-    if (!Validator.validatePassword(formdata.password)) {
-      showAlert("Invalid Password", "warning");
-      return;
-    }
+    // if (!Validator.validatePassword(formdata.password)) {
+    //   showAlert("Invalid Password", "warning");
+    //   return;
+    // }
     try {
       const res = await AuthService.signin(formdata);
       if (!res.response) {
@@ -55,7 +55,7 @@ const useSignin = () => {
         return;
       }
       TokenService.setTokens(access, refresh);
-      dispatch(setUser(res.data.user));
+      // dispatch(setUser(res.data.user));
       dispatch(setAuth({ isAuthenticated: true }));
       showAlert(res.message, "success");
       navigate(PAGES.ADMIN_LEADS);

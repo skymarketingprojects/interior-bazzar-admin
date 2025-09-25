@@ -17,7 +17,7 @@ const useTopStrip = () => {
       }
       setConfig(res.data);
     } catch (e) {
-      logger.log(e);
+      logger.error("Error while fetching top strip", e);
     } finally {
       setLoading(false);
     }

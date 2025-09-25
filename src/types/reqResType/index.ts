@@ -18,7 +18,20 @@ export interface ApiErrorType {
 export interface RequestOptions {
   auth?: boolean;
   responseType?: "json" | "text" | "blob" | "arrayBuffer";
+  signal?: AbortSignal;
 }
+// admin auth req res types
+
+export interface BusinessSearchType {
+  id: number;
+  businessName: string;
+  businessImage: string;
+}
+export interface BusinessSearchResType {
+  businesses: BusinessSearchType[];
+}
+
+//admin auth req res types ends
 
 // Response After sendin Mobile no to auth
 

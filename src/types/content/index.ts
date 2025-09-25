@@ -55,3 +55,23 @@ export interface AdminLeadType {
 }
 
 export type AdminLeadFormType = Omit<AdminLeadType, "id"> & { id?: number };
+
+export interface BusinessType {
+  id: number;
+  badge: string;
+  bio: string;
+  business_name: string;
+  buss_id: number;
+  category: string;
+  city: string;
+  country: string;
+  cover_image_url: string;
+  gst: string;
+  location_link: string;
+  pin_code: string;
+  segment: string;
+  since: string;
+  state: string;
+  updated_at: string;
+  whatsapp: string;
+}

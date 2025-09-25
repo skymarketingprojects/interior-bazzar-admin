@@ -9,7 +9,7 @@ const ReelContainer = ({ reels }: { reels: VideoTypeTemp[] }) => {
   // const handlePlayRequest = (videoId: string) => {
   //   setPlayingVideoId(videoId);
   // };
-  logger.log(reels)
+
   // const images = [
   //   STATIC_IMAGES.REVIEW1,
   //   STATIC_IMAGES.REVIEW2,

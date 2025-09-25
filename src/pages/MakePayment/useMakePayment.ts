@@ -117,7 +117,7 @@ const useMakePayment = (planId: string | null) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    logger.log("this is userIfor;", userInfo);
+
     if (!userInfo.email && !userInfo.phone) {
       showAlert("Can't proceed without email or phone", "error");
       return;

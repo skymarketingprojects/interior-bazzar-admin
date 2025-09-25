@@ -1,4 +1,5 @@
 export class AppUrl {
+  admin: string;
   auth: string;
   user: string;
   common: string;
@@ -21,6 +22,7 @@ export class AppUrl {
   quote: string;
   feedback: string;
   constructor() {
+    this.admin = `v1/admin`;
     this.auth = `v1/auth`;
     this.user = `v1/user`;
     this.common = `v1/common`;

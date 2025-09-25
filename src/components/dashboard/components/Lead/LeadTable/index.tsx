@@ -7,11 +7,12 @@ import type { AdminLeadType } from "../../../../../types/content";
 import { getLabelByValue } from "../helper";
 import { STATUS, TAGS, PRIORITIES } from "../../../../../utils/constants/app";
 import { logger } from "../../../../../utils/logger";
+import AssignLead from "../../AssignLead";
 const LeadTable = () => {
     const { leads, loading, updateLead } = useLeadTable();
     const { showModal } = useModal();
-    const handleEditClick = (lead: AdminLeadType) => {
-        showModal(<LeadForm lead={lead} onSubmit={updateLead} />)
+    const handleAssignClick = (lead: AdminLeadType) => {
+        showModal(<AssignLead lead={lead} />)
     };
     // if (loading) return <p>Loading...</p>
     // if (!leads.length) {
@@ -22,7 +23,6 @@ const LeadTable = () => {
     //         </div>
     //     )
     // }
-    logger.log("this is leads: ", leads);
     return (
         <div className={styles.wrapper}>
             <table className={styles.table}>
@@ -52,18 +52,14 @@ const LeadTable = () => {
                             </td>
                             <td>{lead.detail}</td>
                             <td>
-
                                 {lead.country}
-
                             </td>
                             <td>
-
                                 {lead.city}
-
                             </td>
                             <td>
 
-                                {lead.assigned}
+                                <button onClick={() => handleAssignClick(lead)}>Assign Lead</button>
 
                             </td>
                             <td><button onClick={() => { }}>View</button></td>

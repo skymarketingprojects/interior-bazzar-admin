@@ -23,7 +23,11 @@ export class ApiService {
     options: RequestOptions = {}
   ): Promise<ApiResponseType<T>> {
     const request = this.createRequest("GET", {}, "json", options.auth ?? true);
-    // logger.log("request: ", request);
+    //new
+    if (options.signal) {
+      (request as RequestInit).signal = options.signal;
+    }
+    //new end
     const response = await fetchWithAuthRetry(this.buildUrl(url), request);
 
     return this.returnResponse(response, options.responseType ?? "json");

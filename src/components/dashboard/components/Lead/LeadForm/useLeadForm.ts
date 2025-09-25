@@ -64,7 +64,6 @@ const useLeadForm = (
   };
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    logger.log("this is formdata: ", formData);
     onsubmit(formData);
   };
   return {

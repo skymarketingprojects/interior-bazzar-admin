@@ -33,6 +33,10 @@ const useLeadTable = (filters: BusinessFilterType) => {
 
   useEffect(() => {
     fetchLeads();
+    return () => {
+      logger.log(filters);
+      logger.log("Unmounted");
+    };
   }, [pageNo]);
   const incrementPage = () => {
     if (pageNo < totalPages) {
@@ -42,13 +46,13 @@ const useLeadTable = (filters: BusinessFilterType) => {
 
   return {
     leads,
-    incrementPage,
+    hasNext,
+    pageNo,
     loading,
     pageSize,
-    pageNo,
     totalPages,
     setPageNo,
-    hasNext,
+    incrementPage,
   };
 };
 

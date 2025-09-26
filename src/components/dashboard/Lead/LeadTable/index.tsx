@@ -63,7 +63,12 @@ const LeadTable = () => {
                                     {renderValue(lead.city)}
                                 </td>
                                 <td>
-                                    <button onClick={() => handleAssignClick(lead)}>Assign Lead</button>
+                                    <button
+                                        className={styles.assignButton}
+                                        onClick={() => handleAssignClick(lead)}
+                                    >
+                                        Assign Lead
+                                    </button>
                                 </td>
                                 <td>
                                     <button onClick={() => { }}>View</button>

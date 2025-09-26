@@ -47,10 +47,8 @@
 .content {
   flex: 1;
   width: 100%;
-  padding: 1rem;
-  overflow-y: auto;
+  overflow-y: hidden auto;
   margin: auto auto;
-  /* max-width: var(--max-width-container); this needs to be improved*/
 }
 
 .btnContainer {

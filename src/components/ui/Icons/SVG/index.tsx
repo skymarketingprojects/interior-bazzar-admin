@@ -1,5 +1,27 @@
 import type { SvgIconProps } from "../../../../types/propTypes";
 
+const UsersIcon = (props: SvgIconProps = {}) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            className="lucide lucide-users-icon lucide-users"
+            {...props}
+        >
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+            <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+            <circle cx="9" cy="7" r="4" />
+        </svg>
+    );
+};
 const ContactIcon = (props: SvgIconProps = {}) => {
     return (
         <svg
@@ -171,7 +193,6 @@ const EyeOpenIcon = (props: SvgIconProps = {}) => {
         >
             <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
             <circle cx="12" cy="12" r="3" />
-
         </svg>
     );
 };
@@ -521,4 +542,5 @@ export {
     HamburgerIcon,
     PaymentPolicyIcon,
     SpreadSheetEditIcon,
+    UsersIcon
 };

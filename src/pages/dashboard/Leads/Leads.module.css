@@ -1,3 +1,18 @@
+.leadDashboardContainer {
+  padding: 0px var(--padding-xxl);
+  max-height: 100%;
+}
+.sectionHeader {
+  display: flex;
+  margin: var(--margin-xl) 0px;
+  gap: var(--gap-lg);
+  align-items: center;
+}
+.icon {
+  height: 50px;
+  color: var(--text-light-color);
+  aspect-ratio: 1/1;
+}
 .sectionPara {
   font-weight: 600;
   font-size: var(--font-size-sm);

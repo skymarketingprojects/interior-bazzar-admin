@@ -1,5 +1,6 @@
 .wrapper {
-  height: 600px;
+  height: 90vh;
+  width: 90vw;
 }
 .searchContainer {
   width: 100%;

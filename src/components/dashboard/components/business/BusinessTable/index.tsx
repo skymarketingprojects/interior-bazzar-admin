@@ -1,23 +1,22 @@
+import styles from "./BusinessTable.module.css";
 import useBusinessTable from "./useBusinessTable";
-import styles from "./LeadTable.module.css";
-import { useModal } from "../../../../../context/ModalContext";
-import type { AdminLeadType } from "../../../../../types/content";
-import AssignLead from "../../AssignLead";
+
+
 const BusinessTable = () => {
-    const { loading,
-        leads,
-        pageSize,
-        incrementPage,
+    const {
         pageNo,
-        totalPages,
+        loading,
+        hasNext,
+        pageSize,
         setPageNo,
-        hasNext, } = useBusinessTable();
-    const { showModal } = useModal();
-    const handleAssignClick = (lead: AdminLeadType) => {
-        showModal(<AssignLead lead={lead} />)
-    };
-    const renderValue = (value: string | null | undefined) => {
-        if (!value) return "--";
+        businesses,
+        totalPages,
+        incrementPage,
+    } = useBusinessTable();
+
+
+    const renderValue = (value: string | null | undefined | number) => {
+        if (!value && value !== 0) return "--";
         return value;
     };
 
@@ -26,16 +25,13 @@ const BusinessTable = () => {
             <table className={styles.table}>
                 <thead>
                     <tr>
-                        <th>Date</th>
+                        <th>ID</th>
+                        <th>Join At</th>
                         <th>Name</th>
-                        <th>Phone</th>
-                        <th>Mail</th>
-                        <th>Interested</th>
-                        <th>Query</th>
-                        <th>Country</th>
-                        <th>City</th>
-                        <th>Assigned</th>
-                        <th>View</th>
+                        <th>Plan</th>
+                        <th>Assigned Leads</th>
+                        <th>Platform Leads</th>
+                        <th>Total Leads</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,28 +39,19 @@ const BusinessTable = () => {
                         <td colSpan={10}>
                             loading....
                         </td>
-                    </tr>) : leads.map((lead) => (
-                        <tr key={lead.id}>
-                            <td>{renderValue(lead.date)}</td>
-                            <td>{renderValue(lead.name)}</td>
-                            <td>{renderValue(lead.phone)}</td>
-                            <td>{renderValue(lead.email)}</td>
+                    </tr>) : businesses.map((business) => (
+                        <tr key={business.id}>
+                            <td>{renderValue(business.id)}</td>
+                            <td>{renderValue(business.joinAt)}</td>
+                            <td>{renderValue(business.name)}</td>
+                            <td>{renderValue(business.plan)}</td>
                             <td>
-                                {renderValue(lead.interested)}
+                                {renderValue(business.assignedLeads)}
                             </td>
-                            <td>{renderValue(lead.query)}</td>
+                            <td>{renderValue(business.platformLeads)}</td>
                             <td>
-                                {renderValue(lead.country)}
+                                {renderValue(business.totalLeads)}
                             </td>
-                            <td>
-                                {renderValue(lead.city)}
-                            </td>
-                            <td>
-
-                                <button onClick={() => handleAssignClick(lead)}>Assign Lead</button>
-
-                            </td>
-                            <td><button onClick={() => { }}>View</button></td>
                         </tr>
                     ))}
 

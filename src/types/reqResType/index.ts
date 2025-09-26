@@ -1,7 +1,11 @@
 import type { AUTH_VARS } from "../../utils/constants/app";
-import type { BusinessCardProps } from "../content";
+import type {
+  AdminBusinessListType,
+  AdminLeadType,
+  BusinessCardProps,
+} from "../content";
 import type { BlogType } from "../global";
-
+/* ############################################################################################## */
 export interface ApiResponseType<T> {
   data: T;
   response: boolean;
@@ -20,7 +24,21 @@ export interface RequestOptions {
   responseType?: "json" | "text" | "blob" | "arrayBuffer";
   signal?: AbortSignal;
 }
-// admin auth req res types
+// admin panel here
+export interface GetPaginatedAdminLeadsType {
+  pageNo: number;
+  hasNext: boolean;
+  totalPages: number;
+  leads: AdminLeadType[];
+}
+export interface GetPaginatedAdminBusinessesType {
+  pageNo: number;
+  hasNext: boolean;
+  totalPages: number;
+  businesses: AdminBusinessListType[];
+}
+
+/* ############################################################################################## */
 
 export interface BusinessSearchType {
   id: number;
@@ -88,24 +106,3 @@ export interface GetPaginatedBlogs {
   totalPage: number;
   pageNo: number;
 }
-
-// Generic paginated response
-// export interface PaginatedResponse<T> {
-//   pageNo: number;
-//   hasNext: boolean;
-//   totalPage: number;
-//   data: T[];
-// }
-
-// // Specific usage
-// export type GetPaginatedBusinessResType = PaginatedResponse<BusinessCardProps>;
-// export type GetPaginatedBlogs = PaginatedResponse<BlogType>;
-
-// // For top sellers, if you want a custom structure
-// export interface GetTopSellersResType {
-//   topSeller: BusinessCardProps[];
-//   businesses: BusinessCardProps[];
-//   hasNext: boolean;
-//   totalPage: number;
-//   pageNo: number;
-// }

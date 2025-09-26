@@ -49,11 +49,14 @@ export interface AdminLeadType {
   assigned: string;
 }
 
-export interface GetPaginatedAdminLeadsType {
-  pageNo: number;
-  hasNext: boolean;
-  totalPages: number;
-  leads: AdminLeadType[];
+export interface AdminBusinessListType {
+  id: number;
+  name: string;
+  plan: string;
+  joinAt: string;
+  totalLeads: number;
+  assignedLeads: number;
+  platformLeads: number;
 }
 
 export type AdminLeadFormType = Omit<AdminLeadType, "id"> & { id?: number };

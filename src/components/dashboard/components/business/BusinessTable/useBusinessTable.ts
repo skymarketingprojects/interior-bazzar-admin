@@ -1,71 +1,81 @@
 import { useEffect, useState } from "react";
-import type {
-  AdminLeadType,
-  AdminLeadFormType,
-} from "../../../../../types/content";
 import { logger } from "../../../../../utils/logger";
-// import { useAlert } from "../../../../../context/AlertContext";
-// import { useModal } from "../../../../../context/ModalContext";
 import { AdminService } from "../../../../../api/modules/admin";
+import type { AdminBusinessListType } from "../../../../../types/content";
 const useBusinessTable = () => {
-  // const { showAlert } = useAlert();
-  // const { closeModal } = useModal();
   const [loading, setLoading] = useState<boolean>(false);
-  const [leads, setLeads] = useState<AdminLeadType[]>([]);
+  const [businesses, setBusinesses] = useState<AdminBusinessListType[]>([
+    {
+      id: 1,
+      name: "Acme Corp",
+      plan: "Premium",
+      joinAt: "2023-08-15T10:23:00Z",
+      totalLeads: 150,
+      assignedLeads: 90,
+      platformLeads: 60,
+    },
+    {
+      id: 2,
+      name: "Beta Solutions",
+      plan: "Standard",
+      joinAt: "2022-11-03T08:15:00Z",
+      totalLeads: 80,
+      assignedLeads: 50,
+      platformLeads: 30,
+    },
+    {
+      id: 3,
+      name: "Gamma Group",
+      plan: "Enterprise",
+      joinAt: "2024-03-21T14:05:00Z",
+      totalLeads: 220,
+      assignedLeads: 180,
+      platformLeads: 40,
+    },
+    {
+      id: 4,
+      name: "Delta Dynamics",
+      plan: "Basic",
+      joinAt: "2023-01-10T09:40:00Z",
+      totalLeads: 45,
+      assignedLeads: 20,
+      platformLeads: 25,
+    },
+    {
+      id: 5,
+      name: "Epsilon Ventures",
+      plan: "Premium",
+      joinAt: "2024-07-05T12:00:00Z",
+      totalLeads: 300,
+      assignedLeads: 200,
+      platformLeads: 100,
+    },
+  ]);
   const [pageNo, setPageNo] = useState<number>(1);
   const [hasNext, setHasNext] = useState<boolean>(false);
   const [totalPages, setTotalPages] = useState<number>(1);
-  const [pageSize, setPageSize] = useState<number>(20);
+  const [pageSize] = useState<number>(20);
 
-  const fetchLeads = async () => {
+  const fetchBusinesses = async () => {
     try {
       setLoading(true);
-      const res = await AdminService.fetchLeads(pageNo, pageSize);
+      const res = await AdminService.fetchBusinesses(pageNo, pageSize);
       if (!res.response) {
-        logger.error("Failed to fetch leads");
+        logger.error("Failed to fetch businesses");
         return;
       }
-      setLeads(res.data.leads);
-      setTotalPages(res.data.totalPages);
       setHasNext(res.data.hasNext);
+      setTotalPages(res.data.totalPages);
+      setBusinesses(res.data.businesses);
     } catch (e) {
-      logger.error("Error while fetching leads: ", e);
+      logger.error("Error while fetching businesses: ", e);
     } finally {
       setLoading(false);
     }
   };
 
-  const updateLead = async (updatedLead: AdminLeadFormType) => {
-    // const { id } = updatedLead;
-    // if (!id) {
-    //   logger.error("Lead id is missing");
-    //   showAlert("Lead id is missing", "error");
-    //   return;
-    // }
-    // try {
-    //   const res = await QueryService.updateLead(updatedLead);
-    //   logger.log("thios is  updated lead: ", res);
-    //   if (!res.response) {
-    //     showAlert("Failed to update lead", "error");
-    //     return;
-    //   }
-    //   showAlert("Lead updated successfully", "success");
-    //   const updatedLeads = leads.map((lead) => {
-    //     if (lead.id === id) {
-    //       return res.data;
-    //     }
-    //     return lead;
-    //   });
-    //   closeModal();
-    //   setLeads(updatedLeads);
-    // } catch (e) {
-    //   logger.error("Error while updating lead: ", e);
-    //   showAlert("Error while updating lead", "error");
-    // }
-  };
-
   useEffect(() => {
-    fetchLeads();
+    fetchBusinesses();
   }, [pageNo]);
   const incrementPage = () => {
     if (pageNo < totalPages) {
@@ -74,15 +84,14 @@ const useBusinessTable = () => {
   };
 
   return {
-    leads,
-    incrementPage,
-    loading,
-    updateLead,
-    pageSize,
     pageNo,
-    totalPages,
-    setPageNo,
+    loading,
     hasNext,
+    pageSize,
+    setPageNo,
+    businesses,
+    totalPages,
+    incrementPage,
   };
 };
 

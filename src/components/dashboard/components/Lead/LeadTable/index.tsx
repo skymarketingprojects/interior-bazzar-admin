@@ -4,14 +4,16 @@ import { useModal } from "../../../../../context/ModalContext";
 import type { AdminLeadType } from "../../../../../types/content";
 import AssignLead from "../../AssignLead";
 const LeadTable = () => {
-    const { loading,
+    const {
         leads,
-        pageSize,
-        incrementPage,
         pageNo,
-        totalPages,
+        loading,
+        hasNext,
+        pageSize,
         setPageNo,
-        hasNext, } = useLeadTable();
+        totalPages,
+        incrementPage,
+    } = useLeadTable();
     const { showModal } = useModal();
     const handleAssignClick = (lead: AdminLeadType) => {
         showModal(<AssignLead lead={lead} />)
@@ -39,34 +41,35 @@ const LeadTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {loading ? Array.from({ length: pageSize }).map((_, i) => <tr key={i}>
-                        <td colSpan={10}>
-                            loading....
-                        </td>
-                    </tr>) : leads.map((lead) => (
-                        <tr key={lead.id}>
-                            <td>{renderValue(lead.date)}</td>
-                            <td>{renderValue(lead.name)}</td>
-                            <td>{renderValue(lead.phone)}</td>
-                            <td>{renderValue(lead.email)}</td>
-                            <td>
-                                {renderValue(lead.interested)}
+                    {loading ?
+                        Array.from({ length: pageSize }).map((_, i) => <tr key={i}>
+                            <td colSpan={10}>
+                                loading....
                             </td>
-                            <td>{renderValue(lead.query)}</td>
-                            <td>
-                                {renderValue(lead.country)}
-                            </td>
-                            <td>
-                                {renderValue(lead.city)}
-                            </td>
-                            <td>
-
-                                <button onClick={() => handleAssignClick(lead)}>Assign Lead</button>
-
-                            </td>
-                            <td><button onClick={() => { }}>View</button></td>
-                        </tr>
-                    ))}
+                        </tr>) : leads.map((lead) => (
+                            <tr key={lead.id}>
+                                <td>{renderValue(lead.date)}</td>
+                                <td>{renderValue(lead.name)}</td>
+                                <td>{renderValue(lead.phone)}</td>
+                                <td>{renderValue(lead.email)}</td>
+                                <td>
+                                    {renderValue(lead.interested)}
+                                </td>
+                                <td>{renderValue(lead.query)}</td>
+                                <td>
+                                    {renderValue(lead.country)}
+                                </td>
+                                <td>
+                                    {renderValue(lead.city)}
+                                </td>
+                                <td>
+                                    <button onClick={() => handleAssignClick(lead)}>Assign Lead</button>
+                                </td>
+                                <td>
+                                    <button onClick={() => { }}>View</button>
+                                </td>
+                            </tr>
+                        ))}
 
                 </tbody>
             </table>

@@ -3,14 +3,23 @@ import apiService from "../../apiService";
 import type {
   ApiResponseType,
   BusinessSearchResType,
+  GetPaginatedAdminLeadsType,
+  GetPaginatedAdminBusinessesType,
 } from "../../../types/reqResType";
 import { logger } from "../../../utils/logger";
-import type {
-  BusinessType,
-  GetPaginatedAdminLeadsType,
-} from "../../../types/content";
+import type { BusinessType } from "../../../types/content";
 
 export class AdminService {
+  static async fetchBusinesses(pageNo: number, pageSize: number) {
+    try {
+      const url = `${appUrl.admin}/businesses/${pageNo}/${pageSize}/`;
+      const response: ApiResponseType<GetPaginatedAdminBusinessesType> =
+        await apiService.getGetApiResponse(url);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
   static async fetchLeads(pageNo: number, pageSize: number) {
     try {
       const url = `${appUrl.admin}/query/${pageNo}/${pageSize}/`;
@@ -44,14 +53,10 @@ export class AdminService {
       throw error;
     }
   }
-
-  static async assignLeadToBusiness(
-    leadId: number,
-    businessId: number
-  ): Promise<ApiResponseType<null>> {
+  static async assignLeadToBusiness(leadId: number, businessId: number) {
     try {
       const url = `${appUrl.admin}/leads/${leadId}/assign/`;
-      const response: ApiResponseType<null> =
+      const response: ApiResponseType<any> =
         await apiService.getPostApiResponse(url, { businessId });
       return response;
     } catch (error) {

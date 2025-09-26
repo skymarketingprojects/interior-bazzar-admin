@@ -1,21 +1,14 @@
 import { useEffect, useState } from "react";
-import type {
-  AdminLeadType,
-  AdminLeadFormType,
-} from "../../../../../types/content";
 import { logger } from "../../../../../utils/logger";
-// import { useAlert } from "../../../../../context/AlertContext";
-// import { useModal } from "../../../../../context/ModalContext";
 import { AdminService } from "../../../../../api/modules/admin";
+import type { AdminLeadType } from "../../../../../types/content";
 const useLeadTable = () => {
-  // const { showAlert } = useAlert();
-  // const { closeModal } = useModal();
-  const [loading, setLoading] = useState<boolean>(false);
-  const [leads, setLeads] = useState<AdminLeadType[]>([]);
+  const [pageSize] = useState<number>(20);
   const [pageNo, setPageNo] = useState<number>(1);
+  const [loading, setLoading] = useState<boolean>(false);
   const [hasNext, setHasNext] = useState<boolean>(false);
+  const [leads, setLeads] = useState<AdminLeadType[]>([]);
   const [totalPages, setTotalPages] = useState<number>(1);
-  const [pageSize, setPageSize] = useState<number>(20);
 
   const fetchLeads = async () => {
     try {
@@ -26,42 +19,13 @@ const useLeadTable = () => {
         return;
       }
       setLeads(res.data.leads);
-      setTotalPages(res.data.totalPages);
       setHasNext(res.data.hasNext);
+      setTotalPages(res.data.totalPages);
     } catch (e) {
       logger.error("Error while fetching leads: ", e);
     } finally {
       setLoading(false);
     }
-  };
-
-  const updateLead = async (updatedLead: AdminLeadFormType) => {
-    // const { id } = updatedLead;
-    // if (!id) {
-    //   logger.error("Lead id is missing");
-    //   showAlert("Lead id is missing", "error");
-    //   return;
-    // }
-    // try {
-    //   const res = await QueryService.updateLead(updatedLead);
-    //   logger.log("thios is  updated lead: ", res);
-    //   if (!res.response) {
-    //     showAlert("Failed to update lead", "error");
-    //     return;
-    //   }
-    //   showAlert("Lead updated successfully", "success");
-    //   const updatedLeads = leads.map((lead) => {
-    //     if (lead.id === id) {
-    //       return res.data;
-    //     }
-    //     return lead;
-    //   });
-    //   closeModal();
-    //   setLeads(updatedLeads);
-    // } catch (e) {
-    //   logger.error("Error while updating lead: ", e);
-    //   showAlert("Error while updating lead", "error");
-    // }
   };
 
   useEffect(() => {
@@ -77,7 +41,6 @@ const useLeadTable = () => {
     leads,
     incrementPage,
     loading,
-    updateLead,
     pageSize,
     pageNo,
     totalPages,

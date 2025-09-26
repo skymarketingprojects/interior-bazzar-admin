@@ -13,7 +13,6 @@ const useAssignLead = (lead: AdminLeadType) => {
     null
   );
 
-  // centralized loading state
   const [loading, setLoading] = useState<Record<LoadingKeys, boolean>>({
     search: false,
     detail: false,
@@ -23,11 +22,17 @@ const useAssignLead = (lead: AdminLeadType) => {
   const controllerRef = useRef<AbortController | null>(null);
 
   /** Utility helper to run async operations with loading state */
-  const runAsync = async (key: LoadingKeys, fn: () => Promise<any>) => {
+  const runAsync = async <T>(
+    key: LoadingKeys,
+    fn: () => Promise<T>
+  ): Promise<T | undefined> => {
     setLoading((prev) => ({ ...prev, [key]: true }));
     try {
       return await fn();
     } catch (err) {
+      if ((err as any).name !== "AbortError") {
+        logger.error(`${key} error:`, err);
+      }
       throw err;
     } finally {
       setLoading((prev) => ({ ...prev, [key]: false }));
@@ -40,25 +45,23 @@ const useAssignLead = (lead: AdminLeadType) => {
     const controller = new AbortController();
     controllerRef.current = controller;
 
-    return runAsync("search", async () => {
+    await runAsync("search", async () => {
       const res = await AdminService.getSearchedBusinesses(
         query,
         controller.signal
       );
       setSearchResults(res.data.businesses || []);
-    }).catch((err) => {
-      if (err.name !== "AbortError") logger.error("Search error:", err);
     });
   };
 
   /** Fetch selected business detail */
   const fetchBusinessDetail = async (businessId: number) => {
-    return runAsync("detail", async () => {
+    await runAsync("detail", async () => {
       const res = await AdminService.getBusinessDetail(businessId);
       setSelectedBusiness(res.data);
       setSearchResults([]);
       setSearchText("");
-    }).catch((err) => logger.error("Business detail fetch error:", err));
+    });
   };
 
   /** Handle input change with debounce */
@@ -83,8 +86,6 @@ const useAssignLead = (lead: AdminLeadType) => {
     setSearchText(business.businessName);
     setSearchResults([]);
     fetchBusinessDetail(business.id);
-    setLoading((prev) => ({ ...prev, search: false }));
-    setLoading((prev) => ({ ...prev, detail: true }));
   };
 
   /** Assign lead to selected business */
@@ -94,26 +95,32 @@ const useAssignLead = (lead: AdminLeadType) => {
     await runAsync("assign", async () => {
       await AdminService.assignLeadToBusiness(lead.id, selectedBusiness.id);
       alert("Lead assigned successfully!");
-    }).catch((err) => {
-      logger.error("Lead assignment failed:", err);
+    }).catch(() => {
       alert("Failed to assign lead.");
     });
   };
 
-  const handleSeachTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value === "") setSearchResults([]);
-    else setLoading((prev) => ({ ...prev, search: true }));
+  /** Input handler */
+  const handleSearchTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
+    if (e.target.value === "") setSearchResults([]);
   };
+
+  const isSearchEmptyState =
+    !loading.search && searchText.trim() !== "" && searchResults.length === 0;
+
+  const isDetailLoading = loading.detail && !selectedBusiness;
 
   return {
     searchText,
-    handleSeachTextChange,
+    handleSearchTextChange,
     searchResults,
     selectedBusiness,
     loading,
     handleSelectBusiness,
     handleAssignLead,
+    isDetailLoading,
+    isSearchEmptyState,
   };
 };
 

@@ -6,7 +6,8 @@ const AssignLead = ({ lead }: { lead: AdminLeadType }) => {
     const {
         loading,
         searchText,
-        handleSeachTextChange,
+        isDetailLoading, isSearchEmptyState,
+        handleSearchTextChange,
         searchResults,
         selectedBusiness,
         handleAssignLead,
@@ -18,7 +19,7 @@ const AssignLead = ({ lead }: { lead: AdminLeadType }) => {
                 <Input
                     value={searchText}
                     className={`${styles.searchInput}`}
-                    onChange={handleSeachTextChange}
+                    onChange={handleSearchTextChange}
                     placeholder="Search business..."
                 />
                 {searchText && <div >

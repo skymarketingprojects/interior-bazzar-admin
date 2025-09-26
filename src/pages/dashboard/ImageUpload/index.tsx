@@ -1,6 +1,5 @@
 import styles from "./ImageUpload.module.css";
 import useImageUpload from "./useImageUpload";
-import { IMAGE_PURPOSE } from "../../../utils/constants/app";
 import { useRef } from "react";
 
 
@@ -9,17 +8,15 @@ const ImageUpload = () => {
     const {
         image,
         imageUrl,
-        purpose,
         imageFile,
-        aspectRatio,
-        setAspectRatio,
         selectFile,
-        handlePurposeChange,
+        aspectRatio,
+        aspectOptions,
+        setAspectRatio,
         uploadProgress,
         CropperComponent,
-        handleImageUpload,
         isImageUploading,
-        aspectOptions,
+        handleImageUpload,
     } = useImageUpload();
     const inputRef = useRef<HTMLInputElement>(null);
     const handleImageClick = () => inputRef.current?.click();
@@ -32,26 +29,7 @@ const ImageUpload = () => {
 
     return (
         <div className={styles.wrapper}>
-            {/* Purpose Selector */}
 
-            <div className={styles.selectorRow}>
-                <label htmlFor="purpose">Purpose:</label>
-                <div className={styles.selectWrapper}>
-                    <select
-                        id="purpose"
-                        value={purpose}
-                        className={styles.select}
-                        onChange={handlePurposeChange}
-                    >
-                        {Object.entries(IMAGE_PURPOSE).map(([key, value]) => (
-                            <option key={key} value={key}>
-                                {value}
-                            </option>
-                        ))}
-                    </select>
-                    <span className={styles.angleDown}>▼</span>
-                </div>
-            </div>
 
             {/* Aspect Ratio Selector */}
             <div className={styles.selectorRow}>

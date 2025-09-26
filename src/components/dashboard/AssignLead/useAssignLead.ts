@@ -106,11 +106,6 @@ const useAssignLead = (lead: AdminLeadType) => {
     if (e.target.value === "") setSearchResults([]);
   };
 
-  const isSearchEmptyState =
-    !loading.search && searchText.trim() !== "" && searchResults.length === 0;
-
-  const isDetailLoading = loading.detail && !selectedBusiness;
-
   return {
     searchText,
     handleSearchTextChange,
@@ -119,8 +114,6 @@ const useAssignLead = (lead: AdminLeadType) => {
     loading,
     handleSelectBusiness,
     handleAssignLead,
-    isDetailLoading,
-    isSearchEmptyState,
   };
 };
 

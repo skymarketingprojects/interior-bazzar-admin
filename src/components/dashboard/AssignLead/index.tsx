@@ -6,7 +6,6 @@ const AssignLead = ({ lead }: { lead: AdminLeadType }) => {
     const {
         loading,
         searchText,
-        isDetailLoading, isSearchEmptyState,
         handleSearchTextChange,
         searchResults,
         selectedBusiness,

@@ -1,9 +1,9 @@
-import useLeadTable from "./useLeadTable";
+import useBusinessTable from "./useBusinessTable";
 import styles from "./LeadTable.module.css";
 import { useModal } from "../../../../../context/ModalContext";
 import type { AdminLeadType } from "../../../../../types/content";
 import AssignLead from "../../AssignLead";
-const LeadTable = () => {
+const BusinessTable = () => {
     const { loading,
         leads,
         pageSize,
@@ -11,7 +11,7 @@ const LeadTable = () => {
         pageNo,
         totalPages,
         setPageNo,
-        hasNext, } = useLeadTable();
+        hasNext, } = useBusinessTable();
     const { showModal } = useModal();
     const handleAssignClick = (lead: AdminLeadType) => {
         showModal(<AssignLead lead={lead} />)
@@ -102,4 +102,4 @@ const LeadTable = () => {
     );
 };
 
-export default LeadTable;
+export default BusinessTable;

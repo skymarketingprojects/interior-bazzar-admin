@@ -6,7 +6,7 @@ import FullPageLayout from "../components/layout/FullPage";
 // Pages
 import SignInPage from "../pages/auth/Signin";
 import LeadDashboard from "../components/dashboard/Leads";
-import BusinessInfo from "../components/dashboard/BusinessInfo";
+import Businessses from "../components/dashboard/Businesses";
 import Profile from "../components/dashboard/Profile";
 import useInitUser from "../hooks/auth/useInitUser";
 import ScrollToTop from "../components/shared/ScrollToTop";
@@ -49,7 +49,7 @@ const UserRoutes = () => {
         path: PAGES.ADMIN_BUSINESS,
         element: (
           <ProtectedRoute>
-            <BusinessInfo />
+            <Businessses />
           </ProtectedRoute>
         ),
       },

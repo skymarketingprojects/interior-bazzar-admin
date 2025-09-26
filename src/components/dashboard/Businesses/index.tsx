@@ -1,9 +1,9 @@
 import { useRef } from "react";
-import styles from "./BusinessInfo.module.css"
+import styles from "./Businesses.module.css"
 import { STATIC_IMAGES } from "../../../utils/constants/image";
 import { Button, Input } from "../../ui";
-import useBusinessInfo from "./useBusinessInfo";
-const BusinessInfo = () => {
+import useBusinesses from "./useBusinesses";
+const Businesses = () => {
     const {
         loading,
         businessData,
@@ -11,7 +11,7 @@ const BusinessInfo = () => {
         isImageUploading,
         selectFile,
         handleSubmit,
-        handleInputChange, } = useBusinessInfo();
+        handleInputChange, } = useBusinesses();
     const inputRef = useRef<HTMLInputElement | null>(null);
     const handleImageClick = () => {
         inputRef.current?.click();
@@ -135,4 +135,4 @@ const BusinessInfo = () => {
         </div>
     );
 };
-export default BusinessInfo;
+export default Businesses;

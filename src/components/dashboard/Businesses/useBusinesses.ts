@@ -6,7 +6,7 @@ import { BusinessService } from "../../../api/modules/business";
 import { useImageUploader } from "../../../hooks/upload/useImageUploader";
 import { useImageCropper } from "../../shared/ImageCropper/useImageCropper";
 
-const useBusinessInfo = () => {
+const useBusinesses = () => {
   const { showAlert } = useAlert();
   const [loading, setLoading] = useState(true);
   const [businessData, setBusinessData] = useState({
@@ -93,4 +93,4 @@ const useBusinessInfo = () => {
     handleInputChange,
   };
 };
-export default useBusinessInfo;
+export default useBusinesses;

@@ -6,7 +6,7 @@ const AssignLead = ({ lead }: { lead: AdminLeadType }) => {
     const {
         loading,
         searchText,
-        setSearchText,
+        handleSeachTextChange,
         searchResults,
         selectedBusiness,
         handleAssignLead,
@@ -17,19 +17,22 @@ const AssignLead = ({ lead }: { lead: AdminLeadType }) => {
             <div className={styles.searchContainer}>
                 <Input
                     value={searchText}
-                    onChange={(e) => setSearchText(e.target.value)}
+                    className={`${styles.searchInput}`}
+                    onChange={handleSeachTextChange}
                     placeholder="Search business..."
                 />
-                {loading.search && <p>Searching...</p>}
-
-                <ul>
-                    {searchResults.length > 0 ? searchResults.map((b) => (
-                        <li key={b.id} onClick={() => handleSelectBusiness(b)}>
-                            {b.businessName}
-                        </li>
-                    )) : "No businesses found"}
-                </ul>
-
+                {searchText && <div >
+                    <ul className={styles.resultsListContainer}>
+                        {loading.search ? <li>loading...</li> : searchResults.length > 0 ? searchResults.map((b) => (
+                            <li key={b.id} onClick={() => handleSelectBusiness(b)}>
+                                {b.businessName}
+                            </li>
+                        )) : "No businesses found"}
+                    </ul>
+                </div>}
+            </div>
+            <div>
+                <h3>Business Inof</h3>
                 {selectedBusiness && (
                     <div>
                         {loading.detail ? (
@@ -44,12 +47,12 @@ const AssignLead = ({ lead }: { lead: AdminLeadType }) => {
                         )}
                     </div>
                 )}
-                <div>
-                    <h3>Lead Info</h3>
-                    <p><strong>Name:</strong> {lead.name}</p>
-                    <p><strong>Email:</strong> {lead.email}</p>
-                    <p><strong>Phone:</strong> {lead.phone}</p>
-                </div>
+            </div>
+            <div>
+                <h3>Lead Info</h3>
+                <p><strong>Name:</strong> {lead.name}</p>
+                <p><strong>Email:</strong> {lead.email}</p>
+                <p><strong>Phone:</strong> {lead.phone}</p>
             </div>
         </div>
     )

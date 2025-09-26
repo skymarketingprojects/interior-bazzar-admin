@@ -10,7 +10,8 @@
   border-radius: 6px;
   box-sizing: border-box;
 }
-
+.searchInput {
+}
 .resultsListContainer {
   left: 0;
   right: 0;
@@ -20,9 +21,10 @@
   margin-top: 4px;
   list-style: none;
   overflow-y: auto;
-  max-height: 200px;
+  height: 200px;
   border-radius: 6px;
   position: absolute;
+  background-color: white;
 }
 
 .resultsListContainer li {

@@ -56,6 +56,8 @@ const useAssignLead = (lead: AdminLeadType) => {
     return runAsync("detail", async () => {
       const res = await AdminService.getBusinessDetail(businessId);
       setSelectedBusiness(res.data);
+      setSearchResults([]);
+      setSearchText("");
     }).catch((err) => logger.error("Business detail fetch error:", err));
   };
 
@@ -81,6 +83,8 @@ const useAssignLead = (lead: AdminLeadType) => {
     setSearchText(business.businessName);
     setSearchResults([]);
     fetchBusinessDetail(business.id);
+    setLoading((prev) => ({ ...prev, search: false }));
+    setLoading((prev) => ({ ...prev, detail: true }));
   };
 
   /** Assign lead to selected business */
@@ -96,9 +100,15 @@ const useAssignLead = (lead: AdminLeadType) => {
     });
   };
 
+  const handleSeachTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value === "") setSearchResults([]);
+    else setLoading((prev) => ({ ...prev, search: true }));
+    setSearchText(e.target.value);
+  };
+
   return {
     searchText,
-    setSearchText,
+    handleSeachTextChange,
     searchResults,
     selectedBusiness,
     loading,

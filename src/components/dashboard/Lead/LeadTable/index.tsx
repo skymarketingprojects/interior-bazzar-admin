@@ -3,8 +3,8 @@ import useLeadTable from "./useLeadTable";
 import AssignLead from "../../AssignLead";
 import styles from "./LeadTable.module.css";
 import { useModal } from "../../../../context/ModalContext";
-import type { AdminLeadType, BusinessFilterType } from "../../../../types/content";
-const LeadTable = React.memo(({ filter }: { filter: BusinessFilterType }) => {
+import type { AdminLeadType, LeadFilterType } from "../../../../types/content";
+const LeadTable = React.memo(({ filter }: { filter: LeadFilterType }) => {
 
     const {
         leads,

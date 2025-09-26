@@ -2,6 +2,10 @@ export interface BusinessFilterType {
   sortBy: string;
   searchText: string;
 }
+export interface LeadFilterType {
+  sortBy: string;
+  searchText: string;
+}
 /*###############################################################################*/
 
 export interface PlanType {

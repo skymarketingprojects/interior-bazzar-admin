@@ -1,11 +1,11 @@
 import { useState } from "react";
-import type { BusinessFilterType } from "../../../types/content";
+import type { LeadFilterType } from "../../../types/content";
 
 const useLeads = () => {
   const [noOfUsers] = useState<number>(25478);
   const [selectOptions] = useState<string[]>(["All", "Active"]);
   const [selectedOption, setSelectedOption] = useState<string>("");
-  const [filters, setFilters] = useState<BusinessFilterType>({
+  const [filters, setFilters] = useState<LeadFilterType>({
     sortBy: "",
     searchText: "",
   });

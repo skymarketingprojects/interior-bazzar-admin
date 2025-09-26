@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { logger } from "../../../../utils/logger";
 import { AdminService } from "../../../../api/modules/admin";
-import type { AdminBusinessListType } from "../../../../types/content";
-const useBusinessTable = () => {
+import type {
+  AdminBusinessListType,
+  BusinessFilterType,
+} from "../../../../types/content";
+const useBusinessTable = (filter: BusinessFilterType) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [businesses, setBusinesses] = useState<AdminBusinessListType[]>([
     {
@@ -76,6 +79,9 @@ const useBusinessTable = () => {
 
   useEffect(() => {
     fetchBusinesses();
+    return () => {
+      logger.log("this is it:", filter);
+    };
   }, [pageNo]);
   const incrementPage = () => {
     if (pageNo < totalPages) {

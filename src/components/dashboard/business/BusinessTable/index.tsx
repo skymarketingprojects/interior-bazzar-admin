@@ -1,8 +1,9 @@
+import type { BusinessFilterType } from "../../../../types/content";
 import styles from "./BusinessTable.module.css";
 import useBusinessTable from "./useBusinessTable";
 
 
-const BusinessTable = () => {
+const BusinessTable = ({ filter }: { filter: BusinessFilterType }) => {
     const {
         pageNo,
         loading,
@@ -12,7 +13,7 @@ const BusinessTable = () => {
         businesses,
         totalPages,
         incrementPage,
-    } = useBusinessTable();
+    } = useBusinessTable(filter);
 
 
     const renderValue = (value: string | null | undefined | number) => {

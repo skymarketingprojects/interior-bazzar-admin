@@ -5,7 +5,7 @@ import { PAGES } from "../../../../utils/constants/app";
 import AuthCard from "../../AuthCard";
 import useSignin from "./useSignin";
 const Signin = () => {
-    const { formdata, handleChange, handleSignin } = useSignin();
+    const { loading, formdata, handleChange, handleSignin } = useSignin();
     return (
         <AuthCard title="Sign In">
             <form onSubmit={handleSignin} className={styles.form}>
@@ -28,8 +28,8 @@ const Signin = () => {
                 <Link to={PAGES.FORGOT_PASSWORD} className={styles.forgotPasswordLink}>
                     Forgot Password?
                 </Link>
-                <Button variant="gradient" type="submit" className={styles.button}>
-                    Submit
+                <Button disabled={loading} variant="gradient" type="submit" className={styles.button}>
+                    {loading ? "Please wait..." : "Submit"}
                 </Button>
             </form>
 

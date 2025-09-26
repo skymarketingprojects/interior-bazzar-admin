@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 const useSignin = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const { showAlert } = useAlert();
   const [formdata, setFormdata] = useState<{
     username: string;
@@ -38,6 +39,7 @@ const useSignin = () => {
       return;
     }
     try {
+      setLoading(true);
       const res = await AuthService.signin(formdata);
       if (!res.response) {
         showAlert(res.message, "warning");
@@ -55,9 +57,11 @@ const useSignin = () => {
     } catch (e) {
       showAlert("Error signing in", "error");
       logger.error("Error while signing in: ", e);
+    } finally {
+      setLoading(false);
     }
   };
 
-  return { formdata, handleChange, handleSignin };
+  return { loading, formdata, handleChange, handleSignin };
 };
 export default useSignin;

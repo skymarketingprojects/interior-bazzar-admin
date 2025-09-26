@@ -4,20 +4,25 @@
 }
 .sectionHeader {
   display: flex;
-  margin: var(--margin-xl) 0px;
   gap: var(--gap-lg);
   align-items: center;
+  margin: 10px 0px;
 }
 .icon {
-  height: 50px;
-  color: var(--text-light-color);
   aspect-ratio: 1/1;
+  color: var(--text-light-color);
 }
 .sectionPara {
   font-weight: 600;
   font-size: var(--font-size-sm);
 }
 .filteresContainer {
-  gap: 1rem;
   display: flex;
+  gap: var(--gap-lg);
+  width: fit-content;
+  justify-content: flex-start;
+  margin: 10px 0px;
+}
+.select {
+  width: 150px;
 }

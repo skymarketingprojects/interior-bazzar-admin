@@ -1,9 +1,12 @@
+import React from "react";
 import useLeadTable from "./useLeadTable";
 import styles from "./LeadTable.module.css";
 import { useModal } from "../../../../context/ModalContext";
-import type { AdminLeadType } from "../../../../types/content";
+import type { AdminLeadType, BusinessFilterType } from "../../../../types/content";
 import AssignLead from "../../AssignLead";
-const LeadTable = () => {
+import { logger } from "../../../../utils/logger";
+const LeadTable = React.memo(({ filter }: { filter: BusinessFilterType }) => {
+    logger.log("Table render:J ", filter)
     const {
         leads,
         pageNo,
@@ -108,6 +111,6 @@ const LeadTable = () => {
             </div>
         </div>
     );
-};
+});
 
 export default LeadTable;

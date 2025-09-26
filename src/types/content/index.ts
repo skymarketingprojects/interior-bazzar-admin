@@ -1,3 +1,9 @@
+export interface BusinessFilterType {
+  sortBy: string;
+  searchText: string;
+}
+/*###############################################################################*/
+
 export interface PlanType {
   id: number;
   name: string;

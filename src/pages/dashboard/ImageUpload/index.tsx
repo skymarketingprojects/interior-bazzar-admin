@@ -31,7 +31,7 @@ const ImageUpload = () => {
         <div className={styles.wrapper}>
 
 
-            {/* Aspect Ratio Selector */}
+
             <div className={styles.selectorRow}>
                 <label htmlFor="aspect">Aspect Ratio:</label>
                 <div className={styles.selectWrapper}>
@@ -50,7 +50,7 @@ const ImageUpload = () => {
                     <span className={styles.angleDown}>▼</span>
                 </div>
             </div>
-            {/* input */}
+
             <input
                 ref={inputRef}
                 type="file"
@@ -70,18 +70,18 @@ const ImageUpload = () => {
                 </div>
             )}
 
-            {/* Upload Button */}
+
             <button onClick={handleImageUpload} className={styles.uploadButton}>
 
                 {imageFile ? "Upload Image" : "Select Image to Upload"}
             </button>
 
-            {/* Cropper */}
+
             {CropperComponent && (
                 <div className={styles.cropperWrapper}>{CropperComponent}</div>
             )}
 
-            {/* Upload Progress */}
+
             {isImageUploading && (
                 <div className={styles.progressBarWrapper}>
                     <div
@@ -91,7 +91,7 @@ const ImageUpload = () => {
                 </div>
             )}
 
-            {/* URL + Copy */}
+
             {imageUrl && (
                 <div className={styles.urlWrapper}>
                     <input

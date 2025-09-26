@@ -1,7 +1,7 @@
 import styles from "./Leads.module.css"
-import { LeadTable } from "../components"
+import LeadTable from "../../../components/dashboard/Lead/LeadTable"
 import useLeads from "./useLeads";
-import { Button, Input, SelectPrimitive } from "../../ui";
+import { Button, Input, SelectPrimitive } from "../../../components/ui";
 const LeadDashboard = () => {
     const { noOfUsers, searchText, handleChange } = useLeads();
     return (

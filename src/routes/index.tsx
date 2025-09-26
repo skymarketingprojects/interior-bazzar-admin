@@ -5,14 +5,14 @@ import AdminLayout from "../components/layout/Admin";
 import FullPageLayout from "../components/layout/FullPage";
 // Pages
 import SignInPage from "../pages/auth/Signin";
-import LeadDashboard from "../components/dashboard/Leads";
-import Businessses from "../components/dashboard/Businesses";
 import useInitUser from "../hooks/auth/useInitUser";
 import ScrollToTop from "../components/shared/ScrollToTop";
 import ProtectedRoute from "./ProtectedRoutes";
 import PublicRoute from "./PublicRoutes";
 import AdminLoader from "../components/shared/AdminLoader";
-import Analytics from "../components/dashboard/Analytics";
+import LeadDashboard from "../pages/dashboard/Leads";
+import Businessses from "../pages/dashboard/Businesses";
+import Analytics from "../pages/dashboard/Analytics";
 
 const UserRoutes = () => {
   const { loading } = useInitUser();

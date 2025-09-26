@@ -1,7 +1,7 @@
 import styles from "./Businesses.module.css"
 import useBusinesses from "./useBusinesses";
-import { Button, Input, SelectPrimitive } from "../../ui";
-import BusinessTable from "../components/business/BusinessTable";
+import { Button, Input, SelectPrimitive } from "../../../components/ui";
+import BusinessTable from "../../../components/dashboard/business/BusinessTable";
 
 const Businesses = () => {
     const {

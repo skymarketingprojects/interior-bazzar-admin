@@ -1,12 +1,11 @@
 import React from "react";
 import useLeadTable from "./useLeadTable";
+import AssignLead from "../../AssignLead";
 import styles from "./LeadTable.module.css";
 import { useModal } from "../../../../context/ModalContext";
 import type { AdminLeadType, BusinessFilterType } from "../../../../types/content";
-import AssignLead from "../../AssignLead";
-import { logger } from "../../../../utils/logger";
 const LeadTable = React.memo(({ filter }: { filter: BusinessFilterType }) => {
-    logger.log("Table render:J ", filter)
+
     const {
         leads,
         pageNo,
@@ -16,7 +15,7 @@ const LeadTable = React.memo(({ filter }: { filter: BusinessFilterType }) => {
         setPageNo,
         totalPages,
         incrementPage,
-    } = useLeadTable();
+    } = useLeadTable(filter);
     const { showModal } = useModal();
     const handleAssignClick = (lead: AdminLeadType) => {
         showModal(<AssignLead lead={lead} />)
@@ -70,7 +69,7 @@ const LeadTable = React.memo(({ filter }: { filter: BusinessFilterType }) => {
                                         className={styles.assignButton}
                                         onClick={() => handleAssignClick(lead)}
                                     >
-                                        Assign Lead
+                                        Assign
                                     </button>
                                 </td>
                                 <td>

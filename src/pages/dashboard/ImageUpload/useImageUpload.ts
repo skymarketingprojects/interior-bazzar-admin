@@ -47,10 +47,17 @@ const useImageUpload = () => {
     setImageFile(null);
   };
 
+  const copyToClipboard = async () => {
+    if (imageUrl) {
+      await navigator.clipboard.writeText(imageUrl);
+      showAlert("URL copied to clipboard!", "success");
+    }
+  };
+
   return {
     image,
     imageUrl,
-
+    copyToClipboard,
     imageFile,
 
     aspectRatio,

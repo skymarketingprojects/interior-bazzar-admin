@@ -2,8 +2,6 @@ import styles from "./ImageUpload.module.css";
 import useImageUpload from "./useImageUpload";
 import { useRef } from "react";
 
-
-
 const ImageUpload = () => {
     const {
         image,
@@ -16,22 +14,18 @@ const ImageUpload = () => {
         uploadProgress,
         CropperComponent,
         isImageUploading,
+        copyToClipboard,
         handleImageUpload,
     } = useImageUpload();
+
     const inputRef = useRef<HTMLInputElement>(null);
     const handleImageClick = () => inputRef.current?.click();
-    const copyToClipboard = async () => {
-        if (imageUrl) {
-            await navigator.clipboard.writeText(imageUrl);
-            alert("URL copied to clipboard!");
-        }
-    };
+
+
 
     return (
         <div className={styles.wrapper}>
-
-
-
+            {/* Aspect ratio selector */}
             <div className={styles.selectorRow}>
                 <label htmlFor="aspect">Aspect Ratio:</label>
                 <div className={styles.selectWrapper}>
@@ -51,37 +45,44 @@ const ImageUpload = () => {
                 </div>
             </div>
 
+            {/* File input */}
             <input
                 ref={inputRef}
                 type="file"
                 accept="image/*"
                 hidden
                 onChange={selectFile}
-                className={styles.fileInput}
             />
 
-            {image ? (
-                <div className={styles.previewWrapper}>
+            {/* Image preview respecting aspect ratio */}
+            <div
+                className={styles.previewWrapper}
+                style={{
+                    paddingTop: `${100 / aspectRatio}%`,
+                    cursor: image ? "default" : "pointer",
+                }}
+                onClick={!image ? handleImageClick : undefined}
+            >
+                {image ? (
                     <img src={image} alt="preview" className={styles.previewImage} />
-                </div>
-            ) : (
-                <div className={styles.placeholder} onClick={handleImageClick} >
-                    <p>Click to select image</p>
-                </div>
-            )}
+                ) : (
+                    <div className={styles.placeholder}>
+                        <p>Click to select image</p>
+                    </div>
+                )}
+            </div>
 
-
+            {/* Upload button */}
             <button onClick={handleImageUpload} className={styles.uploadButton}>
-
                 {imageFile ? "Upload Image" : "Select Image to Upload"}
             </button>
 
-
+            {/* Cropper */}
             {CropperComponent && (
                 <div className={styles.cropperWrapper}>{CropperComponent}</div>
             )}
 
-
+            {/* Upload progress */}
             {isImageUploading && (
                 <div className={styles.progressBarWrapper}>
                     <div
@@ -91,15 +92,10 @@ const ImageUpload = () => {
                 </div>
             )}
 
-
+            {/* URL copy */}
             {imageUrl && (
                 <div className={styles.urlWrapper}>
-                    <input
-                        type="text"
-                        value={imageUrl}
-                        readOnly
-                        className={styles.urlInput}
-                    />
+                    <input type="text" value={imageUrl} readOnly className={styles.urlInput} />
                     <button onClick={copyToClipboard} className={styles.copyButton}>
                         Copy URL
                     </button>
@@ -107,6 +103,6 @@ const ImageUpload = () => {
             )}
         </div>
     );
-}
+};
 
 export default ImageUpload;

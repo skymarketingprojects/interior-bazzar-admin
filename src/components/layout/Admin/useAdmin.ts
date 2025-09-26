@@ -27,6 +27,12 @@ const useAdmin = () => {
       icon: SpreadSheetIcon,
       subLinks: [],
     },
+    {
+      label: "Image Upload",
+      url: PAGES.ADMIN_IMAGE_UPLOAD,
+      icon: SpreadSheetIcon,
+      subLinks: [],
+    },
   ]);
 
   const { activeLink } = useMemo(() => {

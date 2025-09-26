@@ -1,0 +1,166 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fafafa;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  max-width: 400px;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+
+.selectorRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+
+.selectorRow label {
+  flex: 0 0 100px;
+  font-weight: 600;
+  color: #333;
+}
+
+.selectWrapper {
+  position: relative;
+  flex: 1;
+}
+
+.select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  appearance: none;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+.angleDown {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 16px;
+  color: #555;
+}
+
+.placeholder {
+  width: 200px;
+  height: 200px;
+  border: 2px dashed #bbb;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 14px;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.placeholder:hover {
+  border-color: #007bff;
+}
+
+.previewWrapper {
+  width: 200px;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.previewImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.uploadButton {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  background: #007bff;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+  border: none;
+}
+
+.uploadButton:hover {
+  background: #0056b3;
+}
+
+.fileInput {
+  display: none;
+}
+
+.cropperWrapper {
+  margin-top: 15px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.progressBarWrapper {
+  width: 100%;
+  height: 8px;
+  background: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progressBar {
+  height: 100%;
+  background: #28a745;
+  transition: width 0.3s ease;
+}
+
+.urlWrapper {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.urlInput {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+}
+
+.copyButton {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #17a2b8;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s;
+}
+
+.copyButton:hover {
+  background: #117a8b;
+}

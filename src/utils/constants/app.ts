@@ -26,6 +26,7 @@ export const PAGES = {
   ADMIN_LEADS: "/admin/leads",
   ADMIN_BUSINESS: "/admin/business",
   ADMIN_ANALYTICS: "/admin/analytics",
+  ADMIN_IMAGE_UPLOAD: "/admin/image-upload",
 };
 
 export const EMPLOYEE_ROLES = {

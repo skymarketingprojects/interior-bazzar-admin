@@ -13,6 +13,7 @@ import AdminLoader from "../components/shared/AdminLoader";
 import LeadDashboard from "../pages/dashboard/Leads";
 import Businessses from "../pages/dashboard/Businesses";
 import Analytics from "../pages/dashboard/Analytics";
+import ImageUpload from "../pages/dashboard/ImageUpload";
 
 const UserRoutes = () => {
   const { loading } = useInitUser();
@@ -58,6 +59,14 @@ const UserRoutes = () => {
         element: (
           <ProtectedRoute>
             <Analytics />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: PAGES.ADMIN_IMAGE_UPLOAD,
+        element: (
+          <ProtectedRoute>
+            <ImageUpload />
           </ProtectedRoute>
         ),
       },

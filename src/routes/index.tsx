@@ -7,12 +7,12 @@ import FullPageLayout from "../components/layout/FullPage";
 import SignInPage from "../pages/auth/Signin";
 import LeadDashboard from "../components/dashboard/Leads";
 import Businessses from "../components/dashboard/Businesses";
-import Profile from "../components/dashboard/Profile";
 import useInitUser from "../hooks/auth/useInitUser";
 import ScrollToTop from "../components/shared/ScrollToTop";
 import ProtectedRoute from "./ProtectedRoutes";
 import PublicRoute from "./PublicRoutes";
 import AdminLoader from "../components/shared/AdminLoader";
+import Analytics from "../components/dashboard/Analytics";
 
 const UserRoutes = () => {
   const { loading } = useInitUser();
@@ -57,7 +57,7 @@ const UserRoutes = () => {
         path: PAGES.ADMIN_ANALYTICS,
         element: (
           <ProtectedRoute>
-            <Profile />
+            <Analytics />
           </ProtectedRoute>
         ),
       },

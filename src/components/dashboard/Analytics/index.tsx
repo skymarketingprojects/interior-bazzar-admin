@@ -7,7 +7,6 @@ const Analytics = () => {
         <>
             <p className={`${styles.sectionPara}`}>Total no of users: <span>{noOfUsers}</span></p>
             <div className={`${styles.filteresContainer}`}>
-
             </div>
         </>
 

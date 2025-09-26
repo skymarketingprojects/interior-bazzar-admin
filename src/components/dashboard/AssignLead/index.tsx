@@ -1,8 +1,7 @@
-import type { AdminLeadType } from "../../../../types/content";
+import type { AdminLeadType } from "../../../types/content";
 import useAssignLead from "./useAssignLead";
 import styles from "./AssignLead.module.css";
-import { Input } from "../../../ui";
-import { logger } from "../../../../utils/logger";
+import { Input } from "../../ui";
 const AssignLead = ({ lead }: { lead: AdminLeadType }) => {
     const {
         loading,
@@ -50,7 +49,6 @@ const AssignLead = ({ lead }: { lead: AdminLeadType }) => {
                     <p><strong>Name:</strong> {lead.name}</p>
                     <p><strong>Email:</strong> {lead.email}</p>
                     <p><strong>Phone:</strong> {lead.phone}</p>
-                    <p><strong>Request:</strong> {lead.request}</p>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import type { AdminLeadFormType } from "../../../../../types/content";
+import type { AdminLeadFormType } from "../../../../types/content";
 import {
   PRIORITIES,
   STATUS,
@@ -7,8 +7,7 @@ import {
   tagsOptions,
   statusOptions,
   priorityOptions,
-} from "../../../../../utils/constants/app";
-import { logger } from "../../../../../utils/logger";
+} from "../../../../utils/constants/app";
 const defaultForm: AdminLeadFormType = {
   id: 0,
   name: "",
@@ -17,7 +16,7 @@ const defaultForm: AdminLeadFormType = {
   interested: "",
   query: "",
   city: "",
-  state: "",
+
   country: "",
   status: "crack",
   tag: "aifiltered",

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { logger } from "../../../../../utils/logger";
-import { AdminService } from "../../../../../api/modules/admin";
-import type { AdminBusinessListType } from "../../../../../types/content";
+import { logger } from "../../../../utils/logger";
+import { AdminService } from "../../../../api/modules/admin";
+import type { AdminBusinessListType } from "../../../../types/content";
 const useBusinessTable = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [businesses, setBusinesses] = useState<AdminBusinessListType[]>([

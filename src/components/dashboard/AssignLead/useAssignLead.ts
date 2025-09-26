@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import type { AdminLeadType, BusinessType } from "../../../../types/content";
-import type { BusinessSearchType } from "../../../../types/reqResType";
-import { AdminService } from "../../../../api/modules/admin";
-import { logger } from "../../../../utils/logger";
+import type { AdminLeadType, BusinessType } from "../../../types/content";
+import type { BusinessSearchType } from "../../../types/reqResType";
+import { AdminService } from "../../../api/modules/admin";
+import { logger } from "../../../utils/logger";
 
 type LoadingKeys = "search" | "detail" | "assign";
 

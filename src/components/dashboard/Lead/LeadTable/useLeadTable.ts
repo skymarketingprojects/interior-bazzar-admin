@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { logger } from "../../../../../utils/logger";
-import { AdminService } from "../../../../../api/modules/admin";
-import type { AdminLeadType } from "../../../../../types/content";
+import { logger } from "../../../../utils/logger";
+import { AdminService } from "../../../../api/modules/admin";
+import type { AdminLeadType } from "../../../../types/content";
 const useLeadTable = () => {
   const [pageSize] = useState<number>(20);
   const [pageNo, setPageNo] = useState<number>(1);

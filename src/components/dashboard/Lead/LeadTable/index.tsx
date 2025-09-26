@@ -1,7 +1,7 @@
 import useLeadTable from "./useLeadTable";
 import styles from "./LeadTable.module.css";
-import { useModal } from "../../../../../context/ModalContext";
-import type { AdminLeadType } from "../../../../../types/content";
+import { useModal } from "../../../../context/ModalContext";
+import type { AdminLeadType } from "../../../../types/content";
 import AssignLead from "../../AssignLead";
 const LeadTable = () => {
     const {

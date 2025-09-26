@@ -1,5 +1,5 @@
-import type { AdminLeadFormType, AdminLeadType } from "../../../../../types/content";
-import { Button, Input, SelectInput } from "../../../../ui";
+import type { AdminLeadFormType, AdminLeadType } from "../../../../types/content";
+import { Button, Input, SelectInput } from "../../../ui";
 import styles from "./LeadForm.module.css";
 import useLeadForm from "./useLeadForm";
 

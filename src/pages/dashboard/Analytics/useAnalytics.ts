@@ -1,5 +1,7 @@
+import { useState } from "react";
+
 const useAnalytics = () => {
-  const noOfUsers = 100; // Example static data, replace with actual logic
+  const [noOfUsers] = useState<number>(25478); // Example static data, replace with actual logic
   return { noOfUsers };
 };
 

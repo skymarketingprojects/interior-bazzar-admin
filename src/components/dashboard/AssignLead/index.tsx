@@ -1,7 +1,7 @@
 import type { AdminLeadType } from "../../../types/content";
 import useAssignLead from "./useAssignLead";
 import styles from "./AssignLead.module.css";
-import { Input } from "../../ui";
+import { Button, Input } from "../../ui";
 const AssignLead = ({ lead }: { lead: AdminLeadType }) => {
     const {
         loading,
@@ -40,9 +40,9 @@ const AssignLead = ({ lead }: { lead: AdminLeadType }) => {
                         ) : (
                             <>
                                 <h3>{selectedBusiness.business_name}</h3>
-                                <button disabled={loading.assign} onClick={handleAssignLead}>
+                                <Button radius disabled={loading.assign} onClick={handleAssignLead}>
                                     {loading.assign ? "Assigning..." : "Assign Lead"}
-                                </button>
+                                </Button>
                             </>
                         )}
                     </div>
@@ -54,6 +54,7 @@ const AssignLead = ({ lead }: { lead: AdminLeadType }) => {
                 <p><strong>Email:</strong> {lead.email}</p>
                 <p><strong>Phone:</strong> {lead.phone}</p>
             </div>
+
         </div>
     )
 }

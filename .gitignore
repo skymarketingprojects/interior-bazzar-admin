@@ -12,11 +12,11 @@ dist
 dist-ssr
 *.local
 
-#environment variables
+# Ignore specific environment files
 .env
+.env.test
 .env.dev
 .env.prod
-.env.test
 
 
 # Editor directories and files

@@ -10,7 +10,7 @@ const ImageUpload = () => {
         selectFile,
         aspectRatio,
         aspectOptions,
-        setAspectRatio,
+
         uploadProgress,
         CropperComponent,
         isImageUploading,

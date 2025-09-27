@@ -32,23 +32,11 @@ const AssignLead = ({ lead }: { lead: AdminLeadType }) => {
     };
 
 
-    const copyToClipboard = async (text: string) => {
-        if (!text) return;
-        try {
-            await navigator.clipboard.writeText(text);
-            // consider adding UI feedback (toast) in your app
-        } catch (e) {
-            // swallow — optional: show fallback
-            // console.warn("copy failed", e);
-        }
-    };
+
     const PLACEHOLDER = ""
 
 
-    const openProfile = (b: any) => {
-        const url = getVal(b, "location_link", "profileUrl", "website");
-        if (url && url !== "—") window.open(url, "_blank");
-    };
+
     return (
         <>
             <div className={styles.wrapper}>

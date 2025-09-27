@@ -5,6 +5,7 @@ import styles from "./LeadTable.module.css";
 import { useModal } from "../../../../context/ModalContext";
 import type { AdminLeadType, LeadFilterType } from "../../../../types/content";
 import LeadDetail from "../LeadDetail";
+import { logger } from "../../../../utils/logger";
 const LeadTable = React.memo(({ filter }: { filter: LeadFilterType }) => {
 
     const {
@@ -29,7 +30,7 @@ const LeadTable = React.memo(({ filter }: { filter: LeadFilterType }) => {
         if (!value) return "--";
         return value;
     };
-
+    logger.log(leads)
     return (
         <div className={styles.wrapper}>
             <table className={styles.table}>

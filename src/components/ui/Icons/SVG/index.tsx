@@ -9,9 +9,9 @@ const UsersIcon = (props: SvgIconProps = {}) => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="lucide lucide-users-icon lucide-users"
             {...props}
         >
@@ -141,9 +141,9 @@ const GiveReviewIcon = (props: SvgIconProps = {}) => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="lucide lucide-message-square-diff-icon lucide-message-square-diff"
             {...props}
         >
@@ -163,9 +163,9 @@ const LinkIcon = (props: SvgIconProps = {}) => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="lucide lucide-link-icon lucide-link"
             {...props}
         >
@@ -182,11 +182,11 @@ const EyeOpenIcon = (props: SvgIconProps = {}) => {
             width="24"
             height="24"
             fill="none"
-            stroke-width="2"
+            strokeWidth="2"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             xmlns="http://www.w3.org/2000/svg"
             className="lucide lucide-eye-icon lucide-eye"
             {...props}
@@ -202,11 +202,11 @@ const EyeCloseIcon = (props: SvgIconProps = {}) => {
             width="24"
             height="24"
             fill="none"
-            stroke-width="2"
+            strokeWidth="2"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             xmlns="http://www.w3.org/2000/svg"
             className="lucide lucide-eye-icon lucide-eye"
             {...props}
@@ -227,9 +227,9 @@ const CrossIcon = (props: SvgIconProps = {}) => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="lucide lucide-x-icon lucide-x"
             {...props}
         >
@@ -247,9 +247,9 @@ const HamburgerIcon = (props: SvgIconProps = {}) => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="lucide lucide-menu-icon lucide-menu"
             {...props}
         >
@@ -268,9 +268,9 @@ const DashboardIcon = (props: SvgIconProps = {}) => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="lucide lucide-layout-dashboard-icon lucide-layout-dashboard"
             {...props}
         >
@@ -360,9 +360,9 @@ const StarIcon = (props: SvgIconProps = {}) => {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="lucide lucide-star-icon lucide-star"
             {...props}
         >

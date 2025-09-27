@@ -4,6 +4,7 @@ import AssignLead from "../../AssignLead";
 import styles from "./LeadTable.module.css";
 import { useModal } from "../../../../context/ModalContext";
 import type { AdminLeadType, LeadFilterType } from "../../../../types/content";
+import LeadDetail from "../LeadDetail";
 const LeadTable = React.memo(({ filter }: { filter: LeadFilterType }) => {
 
     const {
@@ -20,6 +21,9 @@ const LeadTable = React.memo(({ filter }: { filter: LeadFilterType }) => {
     const handleAssignClick = (lead: AdminLeadType) => {
         showModal(<AssignLead lead={lead} />)
     };
+    const handleViewClick = (lead: AdminLeadType) => {
+        showModal(<LeadDetail lead={lead} />)
+    }
     const renderValue = (value: string | null | undefined) => {
         if (!value) return "--";
         return value;
@@ -73,7 +77,12 @@ const LeadTable = React.memo(({ filter }: { filter: LeadFilterType }) => {
                                     </button>
                                 </td>
                                 <td>
-                                    <button onClick={() => { }}>View</button>
+                                    <button
+                                        className={styles.assignButton}
+                                        onClick={() => handleViewClick(lead)}
+                                    >
+                                        View
+                                    </button>
                                 </td>
                             </tr>
                         ))}

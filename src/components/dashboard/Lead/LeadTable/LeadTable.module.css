@@ -50,11 +50,11 @@ table td {
 .assignButton {
   border: none;
   cursor: pointer;
-  padding: 0px 5px;
+  padding: 0px 10px;
   border-radius: 6px;
   color: var(--text-black-color);
   transition: background-color 0.3s ease;
-  background-color: var(--bg-white-color);
+  background-color: rgb(207, 206, 206);
 }
 
 .pagination {

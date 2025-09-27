@@ -12,50 +12,199 @@ const AssignLead = ({ lead }: { lead: AdminLeadType }) => {
         handleAssignLead,
         handleSelectBusiness,
     } = useAssignLead(lead);
-    return (
-        <div className={styles.wrapper}>
-            <div className={styles.searchContainer}>
-                <Input
-                    value={searchText}
-                    className={`${styles.searchInput}`}
-                    onChange={handleSearchTextChange}
-                    placeholder="Search business..."
-                />
-                {searchText && <div >
-                    <ul className={styles.resultsListContainer}>
-                        {loading.search ? <li>loading...</li> : searchResults.length > 0 ? searchResults.map((b) => (
-                            <li key={b.id} onClick={() => handleSelectBusiness(b)}>
-                                {b.businessName}
-                            </li>
-                        )) : "No businesses found"}
-                    </ul>
-                </div>}
-            </div>
-            <div>
-                <h3>Business Inof</h3>
-                {selectedBusiness && (
-                    <div>
-                        {loading.detail ? (
-                            <p>Loading business info...</p>
-                        ) : (
-                            <>
-                                <h3>{selectedBusiness.business_name}</h3>
-                                <Button radius disabled={loading.assign} onClick={handleAssignLead}>
-                                    {loading.assign ? "Assigning..." : "Assign Lead"}
-                                </Button>
-                            </>
-                        )}
-                    </div>
-                )}
-            </div>
-            <div>
-                <h3>Lead Info</h3>
-                <p><strong>Name:</strong> {lead.name}</p>
-                <p><strong>Email:</strong> {lead.email}</p>
-                <p><strong>Phone:</strong> {lead.phone}</p>
-            </div>
+    const getVal = (b: any, ...keys: string[]) => {
+        if (!b) return "—";
+        for (const k of keys) {
+            if (b[k] !== undefined && b[k] !== null && b[k] !== "") return b[k];
+        }
+        return "—";
+    };
 
-        </div>
+
+    const formatDate = (iso?: string) => {
+        if (!iso) return "—";
+        try {
+            const d = new Date(iso);
+            return d.toLocaleString();
+        } catch {
+            return iso;
+        }
+    };
+
+
+    const copyToClipboard = async (text: string) => {
+        if (!text) return;
+        try {
+            await navigator.clipboard.writeText(text);
+            // consider adding UI feedback (toast) in your app
+        } catch (e) {
+            // swallow — optional: show fallback
+            // console.warn("copy failed", e);
+        }
+    };
+    const PLACEHOLDER = ""
+
+
+    const openProfile = (b: any) => {
+        const url = getVal(b, "location_link", "profileUrl", "website");
+        if (url && url !== "—") window.open(url, "_blank");
+    };
+    return (
+        <>
+            <div className={styles.wrapper}>
+
+                <div className={styles.leftColumn}>
+
+                    <div className={styles.searchContainer}>
+
+                        <Input
+                            value={searchText}
+                            onChange={handleSearchTextChange}
+                            placeholder="Search business..."
+                            className={styles.input}
+                        />
+                        {searchText ? (
+                            <div className={styles.resultsListContainer}>
+                                {loading?.search ? (
+                                    <div className={styles.loading}>Loading...</div>
+                                ) : searchResults?.length > 0 ? (
+                                    <ul className={styles.resultsList}>
+                                        {searchResults.map((b: any) => {
+                                            const thumb = getVal(b, "businessImage") || PLACEHOLDER;
+                                            const name = getVal(b, "businessName", "business_name", "name");
+                                            const meta = getVal(b, "city", "state", "segment");
+                                            const isSelected = selectedBusiness && selectedBusiness.id === b.id;
+                                            return (
+                                                <li
+                                                    key={b.id}
+                                                    onClick={() => handleSelectBusiness(b)}
+                                                    className={`${styles.resultItem} ${isSelected ? styles.selected : ""}`}
+                                                    role="button"
+                                                    tabIndex={0}
+                                                    onKeyDown={(e) => {
+                                                        if (e.key === "Enter") handleSelectBusiness(b);
+                                                    }}
+                                                >
+                                                    <img
+                                                        src={thumb}
+                                                        alt={name as string}
+                                                        className={styles.resultThumb}
+                                                        onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                                                            const t = e.currentTarget as HTMLImageElement;
+                                                            t.src = PLACEHOLDER;
+                                                        }}
+                                                    />
+                                                    <div className={styles.resultMeta}>
+                                                        <div className={styles.resultName}>{name}</div>
+                                                        <div className={styles.resultSmall}>{meta}</div>
+                                                    </div>
+                                                    <div className={styles.resultPin}>{getVal(b, "pin_code")}</div>
+                                                </li>
+                                            );
+                                        })}
+                                    </ul>
+                                ) : (
+                                    <div className={styles.noResults}>No businesses found</div>
+                                )}
+                            </div>
+                        ) : null}
+                    </div>
+                    <div className={styles.tip}>Tip: search by name, city or pin code</div>
+                </div>
+                <div className={styles.middleColumn}>
+                    {selectedBusiness ? <div className={styles.previewCard}>
+                        <div className={styles.coverWrap}>
+                            <img
+                                src={getVal(selectedBusiness || {}, "cover_image_url", "coverImage", "cover") || PLACEHOLDER}
+                                alt={getVal(selectedBusiness || {}, "businessName", "business_name", "name") as string}
+                                className={styles.coverImage}
+                                onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                                    const t = e.currentTarget as HTMLImageElement;
+                                    t.src = PLACEHOLDER;
+                                }}
+                            />
+                        </div>
+                        <div className={styles.previewBody}>
+
+                            <div className={styles.previewHeader}>
+                                <div>
+                                    <h3 className={styles.businessTitle}>{getVal(selectedBusiness || {}, "businessName", "business_name", "name")}</h3>
+                                    <div className={styles.metaSmall}>{getVal(selectedBusiness || {}, "category", "segment")}</div>
+                                </div>
+                            </div>
+                            <dl className={styles.detailList}>
+                                <dt className={styles.detailDt}>City</dt>
+                                <dd className={styles.detailDd}>{getVal(selectedBusiness || {}, "city")}</dd>
+
+
+                                <dt className={styles.detailDt}>State</dt>
+                                <dd className={styles.detailDd}>{getVal(selectedBusiness || {}, "state")}</dd>
+
+
+                                <dt className={styles.detailDt}>Pin</dt>
+                                <dd className={styles.detailDd}>{getVal(selectedBusiness || {}, "pin_code", "pin")}</dd>
+
+
+                                <dt className={styles.detailDt}>Last updated</dt>
+                                <dd className={styles.detailDd}>{formatDate(getVal(selectedBusiness || {}, "updated_at", "updatedAt"))}</dd>
+                            </dl>
+
+                        </div>
+                    </div> :
+                        <div className={styles.noBusiness}>
+                            selcte business to see here
+                        </div>}
+                    <div className={styles.rightColumn}>
+                        <div className={styles.leadCard}>
+                            <h4 className={styles.cardTitle}>Lead Info</h4>
+                            <div className={styles.leadBody}>
+
+                                <div className={styles.rowItem}>
+                                    <div className={styles.rowLabel}>Name</div>
+                                    <div className={styles.rowValue}>{lead.name}</div>
+                                </div>
+                                <div className={styles.rowItem}>
+                                    <div className={styles.rowLabel}>Inrested</div>
+                                    <div className={styles.rowValue}>{lead.interested}</div>
+                                </div>
+                                <div className={styles.rowItem}>
+                                    <div className={styles.rowLabel}>Query</div>
+                                    <div className={styles.rowValue}>{lead.query}</div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* <div className={styles.quickCard}>
+                            <h4 className={styles.cardTitle}>Quick actions</h4>
+                            <div className={styles.quickList}>
+                                <Button radius onClick={() => selectedBusiness && openProfile(selectedBusiness)} disabled={!selectedBusiness}>
+                                    Open Business Location
+                                </Button>
+                                <Button
+                                    radius
+                                    onClick={() => selectedBusiness && copyToClipboard(getVal(selectedBusiness, "whatsapp") || "")}
+                                    disabled={!selectedBusiness}
+                                >
+                                    Copy Whatsapp
+                                </Button>
+                                <Button radius onClick={() => copyToClipboard(JSON.stringify(selectedBusiness || {}))}>
+                                    Copy Business JSON
+                                </Button>
+                            </div>
+                        </div> */}
+                    </div>
+                    <div className={styles.assignRow}>
+                        <Button radius onClick={handleAssignLead} disabled={loading?.assign || !selectedBusiness}>
+                            {loading?.assign ? "Assigning..." : "Assign Lead"}
+                        </Button>
+
+
+                        {/* <Button radius onClick={() => copyToClipboard(JSON.stringify(selectedBusiness || {}, null, 2))}>
+                                    Copy JSON
+                                </Button> */}
+                    </div>
+                </div>
+            </div>
+        </>
     )
 }
 export default AssignLead;

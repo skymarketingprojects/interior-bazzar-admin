@@ -3,10 +3,14 @@ import type { AdminLeadType, BusinessType } from "../../../types/content";
 import type { BusinessSearchType } from "../../../types/reqResType";
 import { AdminService } from "../../../api/modules/admin";
 import { logger } from "../../../utils/logger";
+import { useModal } from "../../../context/ModalContext";
+import { useAlert } from "../../../context/AlertContext";
 
 type LoadingKeys = "search" | "detail" | "assign";
 
 const useAssignLead = (lead: AdminLeadType) => {
+  const { closeModal } = useModal();
+  const { showAlert } = useAlert();
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState<BusinessSearchType[]>([]);
   const [selectedBusiness, setSelectedBusiness] = useState<BusinessType | null>(
@@ -94,7 +98,8 @@ const useAssignLead = (lead: AdminLeadType) => {
 
     await runAsync("assign", async () => {
       await AdminService.assignLeadToBusiness(lead.id, selectedBusiness.id);
-      alert("Lead assigned successfully!");
+      showAlert("Lead assigned successfully.", "success");
+      closeModal();
     }).catch(() => {
       alert("Failed to assign lead.");
     });

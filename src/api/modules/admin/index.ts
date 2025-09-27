@@ -7,7 +7,7 @@ import type {
   GetPaginatedAdminBusinessesType,
 } from "../../../types/reqResType";
 import { logger } from "../../../utils/logger";
-import type { BusinessType } from "../../../types/content";
+import type { AdminLeadType, BusinessType } from "../../../types/content";
 
 export class AdminService {
   static async fetchBusinesses(pageNo: number, pageSize: number) {
@@ -53,11 +53,14 @@ export class AdminService {
       throw error;
     }
   }
-  static async assignLeadToBusiness(leadId: number, businessId: number) {
+  static async assignLeadToBusiness(data: {
+    leadId: number;
+    businessId: number;
+  }) {
     try {
-      const url = `${appUrl.admin}/leads/${leadId}/assign/`;
-      const response: ApiResponseType<any> =
-        await apiService.getPostApiResponse(url, { businessId });
+      const url = `${appUrl.admin}/lead/assign/`;
+      const response: ApiResponseType<AdminLeadType> =
+        await apiService.getPostApiResponse(url, data);
       return response;
     } catch (error) {
       throw error;

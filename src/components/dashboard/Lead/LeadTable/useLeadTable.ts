@@ -31,6 +31,9 @@ const useLeadTable = (filters: BusinessFilterType) => {
     }
   };
 
+  const onLeadAssigned = (lead: AdminLeadType) => {
+    setLeads((prev) => prev.map((l) => (l.id === lead.id ? lead : l)));
+  };
   useEffect(() => {
     fetchLeads();
     return () => {
@@ -53,6 +56,7 @@ const useLeadTable = (filters: BusinessFilterType) => {
     totalPages,
     setPageNo,
     incrementPage,
+    onLeadAssigned,
   };
 };
 

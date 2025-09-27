@@ -8,8 +8,8 @@ const ASPECT_RATIO_OPTIONS = [
   { label: "Banner (3/1)", value: 3 / 1 },
   { label: "Cinema (2.5/1)", value: 2.5 / 1 },
   { label: "Ultra Wide (3.5/1)", value: 3.5 / 1 },
-  { label: "Portrait (3/4)", value: 3 / 4 }, // ✅ extra
-  { label: "Landscape (16/9)", value: 16 / 9 }, // ✅ extra
+  { label: "Portrait (3/4)", value: 3 / 4 },
+  { label: "Landscape (16/9)", value: 16 / 9 },
 ];
 
 const useImageUpload = () => {
@@ -43,7 +43,7 @@ const useImageUpload = () => {
       const uploadUrl = await uploadImage(imageFile);
       if (!uploadUrl) {
         showAlert("Image upload failed", "error");
-        setImageFile(null);
+
         return;
       }
       setImageUrl(uploadUrl);
@@ -59,6 +59,12 @@ const useImageUpload = () => {
     }
   };
 
+  const deleteSelectedImage = () => {
+    setImage("");
+    setImageUrl("");
+    setImageFile(null);
+  };
+
   return {
     image,
     imageUrl,
@@ -71,6 +77,7 @@ const useImageUpload = () => {
     CropperComponent,
     isImageUploading,
     handleImageUpload,
+    deleteSelectedImage,
     handleAspectRatioChange,
     aspectOptions: ASPECT_RATIO_OPTIONS,
   };

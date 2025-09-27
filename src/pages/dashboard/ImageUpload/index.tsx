@@ -1,3 +1,4 @@
+import { DeleteIcon } from "../../../components/ui";
 import styles from "./ImageUpload.module.css";
 import useImageUpload from "./useImageUpload";
 import { useRef } from "react";
@@ -10,12 +11,12 @@ const ImageUpload = () => {
         selectFile,
         aspectRatio,
         aspectOptions,
-
         uploadProgress,
         CropperComponent,
         isImageUploading,
         copyToClipboard,
         handleImageUpload,
+        deleteSelectedImage,
         handleAspectRatioChange,
     } = useImageUpload();
 
@@ -73,6 +74,7 @@ const ImageUpload = () => {
                         <p>Click to select image</p>
                     </div>
                 )}
+                {image && <DeleteIcon onClick={deleteSelectedImage} className={styles.deleteIcon} />}
             </div>
 
             {/* Upload button */}

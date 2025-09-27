@@ -16,10 +16,11 @@ const LeadTable = React.memo(({ filter }: { filter: LeadFilterType }) => {
         setPageNo,
         totalPages,
         incrementPage,
+        onLeadAssigned,
     } = useLeadTable(filter);
     const { showModal } = useModal();
     const handleAssignClick = (lead: AdminLeadType) => {
-        showModal(<AssignLead lead={lead} />)
+        showModal(<AssignLead lead={lead} onAssigned={onLeadAssigned} />)
     };
     const handleViewClick = (lead: AdminLeadType) => {
         showModal(<LeadDetail lead={lead} />)
@@ -70,10 +71,10 @@ const LeadTable = React.memo(({ filter }: { filter: LeadFilterType }) => {
                                 </td>
                                 <td>
                                     <button
-                                        className={styles.assignButton}
+                                        className={`${styles.assignButton} ${lead.assigned ? styles.assigned : ""}`}
                                         onClick={() => handleAssignClick(lead)}
                                     >
-                                        Assign
+                                        {lead.assigned ? "Assigned" : "Assign"}
                                     </button>
                                 </td>
                                 <td>

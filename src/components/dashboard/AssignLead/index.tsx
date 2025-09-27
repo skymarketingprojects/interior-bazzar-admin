@@ -2,16 +2,16 @@ import type { AdminLeadType } from "../../../types/content";
 import useAssignLead from "./useAssignLead";
 import styles from "./AssignLead.module.css";
 import { Button, Input } from "../../ui";
-const AssignLead = ({ lead }: { lead: AdminLeadType }) => {
+const AssignLead = ({ lead, onAssigned }: { lead: AdminLeadType, onAssigned: (lead: AdminLeadType) => void }) => {
     const {
         loading,
         searchText,
-        handleSearchTextChange,
         searchResults,
         selectedBusiness,
         handleAssignLead,
         handleSelectBusiness,
-    } = useAssignLead(lead);
+        handleSearchTextChange,
+    } = useAssignLead(lead, onAssigned);
     const getVal = (b: any, ...keys: string[]) => {
         if (!b) return "—";
         for (const k of keys) {

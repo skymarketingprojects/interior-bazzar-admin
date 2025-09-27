@@ -8,7 +8,10 @@ import { useAlert } from "../../../context/AlertContext";
 
 type LoadingKeys = "search" | "detail" | "assign";
 
-const useAssignLead = (lead: AdminLeadType) => {
+const useAssignLead = (
+  lead: AdminLeadType,
+  onAssigned: (lead: AdminLeadType) => void
+) => {
   const { closeModal } = useModal();
   const { showAlert } = useAlert();
   const [searchText, setSearchText] = useState("");
@@ -97,9 +100,15 @@ const useAssignLead = (lead: AdminLeadType) => {
     if (!selectedBusiness) return;
 
     await runAsync("assign", async () => {
-      await AdminService.assignLeadToBusiness(lead.id, selectedBusiness.id);
-      showAlert("Lead assigned successfully.", "success");
+      const data = {
+        leadId: lead.id,
+        businessId: selectedBusiness.buss_id,
+      };
+      const res = await AdminService.assignLeadToBusiness(data);
+      if (!res.response) return;
       closeModal();
+      onAssigned(res.data);
+      showAlert("Lead assigned successfully.", "success");
     }).catch(() => {
       alert("Failed to assign lead.");
     });
@@ -112,13 +121,13 @@ const useAssignLead = (lead: AdminLeadType) => {
   };
 
   return {
+    loading,
     searchText,
-    handleSearchTextChange,
     searchResults,
     selectedBusiness,
-    loading,
-    handleSelectBusiness,
     handleAssignLead,
+    handleSelectBusiness,
+    handleSearchTextChange,
   };
 };
 

@@ -16,6 +16,7 @@ const ImageUpload = () => {
         isImageUploading,
         copyToClipboard,
         handleImageUpload,
+        handleAspectRatioChange,
     } = useImageUpload();
 
     const inputRef = useRef<HTMLInputElement>(null);
@@ -32,11 +33,13 @@ const ImageUpload = () => {
                     <select
                         id="aspect"
                         value={aspectRatio}
-                        onChange={(e) => setAspectRatio(Number(e.target.value))}
                         className={styles.select}
+                        onChange={handleAspectRatioChange}
                     >
                         {aspectOptions.map((opt) => (
-                            <option key={opt.label} value={opt.value}>
+                            <option
+                                key={opt.label} value={opt.value}
+                            >
                                 {opt.label}
                             </option>
                         ))}

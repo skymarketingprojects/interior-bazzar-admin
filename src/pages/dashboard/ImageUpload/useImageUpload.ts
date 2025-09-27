@@ -20,6 +20,11 @@ const useImageUpload = () => {
 
   const [aspectRatio, setAspectRatio] = useState<number>(1 / 1);
 
+  const handleAspectRatioChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value } = e.target;
+    setAspectRatio(Number(value));
+  };
+
   const { isImageUploading, uploadImage, uploadProgress } = useImageUploader({
     forPurpose: "StockMedia",
   });
@@ -57,16 +62,16 @@ const useImageUpload = () => {
   return {
     image,
     imageUrl,
-    copyToClipboard,
     imageFile,
-
+    selectFile,
     aspectRatio,
     setAspectRatio,
-    selectFile,
     uploadProgress,
+    copyToClipboard,
     CropperComponent,
     isImageUploading,
     handleImageUpload,
+    handleAspectRatioChange,
     aspectOptions: ASPECT_RATIO_OPTIONS,
   };
 };

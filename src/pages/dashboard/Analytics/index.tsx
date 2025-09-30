@@ -26,7 +26,7 @@ const Analytics = () => {
                     primaryValue="20"
                     secondaryValues={[
                         { label: "Active", value: 20, color: "green" },
-                        { label: "Inactive", value: 20, color: "red" },
+                        { label: "Active", value: 20, color: "green" },
                     ]}
                 />
 

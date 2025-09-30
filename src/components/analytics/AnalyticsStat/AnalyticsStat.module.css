@@ -1,43 +1,66 @@
 .card {
-  gap: 12px;
-  padding: 12px 20px;
-  border-radius: 8px;
   display: flex;
-  align-items: center;
-  font-family: sans-serif;
-  border: 2px solid green;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
 .iconWrapper {
-  font-size: 28px;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #555;
+  font-size: 22px;
+
+  background: linear-gradient(135deg, #58fe4f, #48cd0a);
+  background: linear-gradient(135deg, #58fe4f, #48cd0a);
 }
 
 .content {
-  display: grid;
-  grid-template-rows: 30px 30px 30px;
-  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* ✅ consistent spacing */
 }
 
 .title {
-  border: 2px solid red;
+  font-size: 15px;
+  font-weight: 600;
+  color: #444;
+  margin: 0;
 }
 
 .primaryValue {
-  border: 2px solid red;
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
 }
 
 .secondary {
   display: flex;
-  gap: var(--gap-xs);
-  border: 2px solid red;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .secondaryItem {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
+  color: #666;
+}
+
+.secondaryItem small {
+  margin-left: 4px;
+  font-weight: 400;
+  color: #999;
 }

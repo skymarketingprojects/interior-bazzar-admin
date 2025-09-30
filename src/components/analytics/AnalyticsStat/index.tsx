@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./AnalyticsStat.module.css";
-
+import type { IconType } from "react-icons";
 type SecondaryValue = {
     label: string;
     value: number | string;
@@ -8,28 +8,23 @@ type SecondaryValue = {
 };
 
 type AnalyticsStatProps = {
-    icon: React.ReactNode;
+    icon: IconType;
     title: string;
     primaryValue: number | string;
     secondaryValues?: SecondaryValue[];
 };
 
 const AnalyticsStat: React.FC<AnalyticsStatProps> = ({
-    icon,
+    icon: Icon,
     title,
     primaryValue,
     secondaryValues,
 }) => {
     return (
         <div className={styles.card}>
-            <div className={styles.iconWrapper}>{icon}</div>
+            <div className={styles.iconWrapper}>{<Icon />}</div>
             <div className={styles.content}>
-                <div>
-                    <p className={styles.title}>
-                        {title}
-                    </p>
-                </div>
-
+                <p className={styles.title}>{title}</p>
                 <div className={styles.primaryValue}>{primaryValue}</div>
                 {secondaryValues && (
                     <div className={styles.secondary}>

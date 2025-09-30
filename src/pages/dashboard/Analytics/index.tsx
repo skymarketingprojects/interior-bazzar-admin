@@ -9,7 +9,7 @@ const Analytics = () => {
         <section className={styles.leadDashboardContainer}>
             <div className={`${styles.sectionHeader}`}>
                 <UsersIcon className={`${styles.icon}`} />
-                <p className={`${styles.sectionPara}`}>Total no of users: <span>{noOfUsers}</span></p>
+                <p className={`${styles.sectionPara}`}>Total no of paid users: <span>{noOfUsers}</span></p>
             </div>
             <div style={{ display: "flex", gap: "20px" }}>
                 {/* Single number */}

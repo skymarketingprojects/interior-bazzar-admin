@@ -11,6 +11,16 @@ import { logger } from "../../../utils/logger";
 import type { AdminLeadType, BusinessType } from "../../../types/content";
 
 export class AdminService {
+  static async fetchTotalUsers() {
+    try {
+      const url = `${appUrl.admin}/total-users/`;
+      const response: ApiResponseType<{ totalUsers: number }> =
+        await apiService.getGetApiResponse(url);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
   static async fetchBusinesses(pageNo: number, pageSize: number) {
     try {
       const url = `${appUrl.admin}/businesses/${pageNo}/${pageSize}/`;
@@ -32,7 +42,6 @@ export class AdminService {
       throw error;
     }
   }
-
   static async fetchFunnelLeads(pageNo: number, pageSize: number) {
     try {
       const url = `${appUrl.admin}/funnel/${pageNo}/${pageSize}/`;

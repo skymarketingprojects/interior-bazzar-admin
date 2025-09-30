@@ -24,9 +24,13 @@ const AnalyticsStat: React.FC<AnalyticsStatProps> = ({
         <div className={styles.card}>
             <div className={styles.iconWrapper}>{icon}</div>
             <div className={styles.content}>
-                <div className={styles.title}>{title}</div>
-                <div className={styles.primaryValue}>{primaryValue}</div>
+                <div>
+                    <p className={styles.title}>
+                        {title}
+                    </p>
+                </div>
 
+                <div className={styles.primaryValue}>{primaryValue}</div>
                 {secondaryValues && (
                     <div className={styles.secondary}>
                         {secondaryValues.map((item, idx) => (

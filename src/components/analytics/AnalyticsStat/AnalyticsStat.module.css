@@ -1,12 +1,12 @@
 .card {
-  display: flex;
-  align-items: center;
   gap: 12px;
   padding: 12px 20px;
   border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
   font-family: sans-serif;
+  border: 2px solid green;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .iconWrapper {
@@ -18,26 +18,23 @@
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 30px 30px 30px;
+  border: 2px solid red;
 }
 
 .title {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 4px;
+  border: 2px solid red;
 }
 
 .primaryValue {
-  font-size: 22px;
-  font-weight: bold;
-  color: #000;
+  border: 2px solid red;
 }
 
 .secondary {
   display: flex;
-  gap: 12px;
-  margin-top: 4px;
+  gap: var(--gap-xs);
+  border: 2px solid red;
 }
 
 .secondaryItem {

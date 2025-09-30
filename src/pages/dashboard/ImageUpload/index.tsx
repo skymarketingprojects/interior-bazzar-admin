@@ -1,7 +1,7 @@
-import { DeleteIcon } from "../../../components/ui";
+import { useRef } from "react";
 import styles from "./ImageUpload.module.css";
 import useImageUpload from "./useImageUpload";
-import { useRef } from "react";
+import { DeleteIcon } from "../../../components/ui";
 
 const ImageUpload = () => {
     const {

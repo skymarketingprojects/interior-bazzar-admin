@@ -1,9 +1,11 @@
-import type { BusinessFilterType } from "../../../../types/content";
+import type { BusinessFilterType, FunnelLeadType } from "../../../../types/content";
 import styles from "./FunnelTable.module.css";
 import useFunnelTable from "./useFunnelTable";
-
+import { useModal } from "../../../../context/ModalContext";
+import FunnelDetail from "../FunnelDetail";
 
 const FunnelTable = ({ filter }: { filter: BusinessFilterType }) => {
+    const { showModal } = useModal();
     const {
         pageNo,
         loading,
@@ -15,6 +17,9 @@ const FunnelTable = ({ filter }: { filter: BusinessFilterType }) => {
         incrementPage,
     } = useFunnelTable(filter);
 
+    const handleLeadDetailView = (lead: FunnelLeadType) => {
+        showModal(<FunnelDetail lead={lead} />);
+    }
 
     const renderValue = (value: string | null | undefined | number) => {
         if (!value && value !== 0) return "--";
@@ -34,7 +39,7 @@ const FunnelTable = ({ filter }: { filter: BusinessFilterType }) => {
                         <th>Plan Type</th>
                         <th>Plan</th>
                         <th>Intrest</th>
-
+                        <th>View</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,6 +62,14 @@ const FunnelTable = ({ filter }: { filter: BusinessFilterType }) => {
                             </td>
                             <td>
                                 {renderValue(lead.intrest)}
+                            </td>
+                            <td>
+                                <button
+                                    className={`${styles.viewButton}`}
+                                    onClick={() => handleLeadDetailView(lead)}
+                                >
+                                    View
+                                </button>
                             </td>
                         </tr>
                     ))}

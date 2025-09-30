@@ -102,6 +102,16 @@ table td {
   background-color: var(--color-high);
 }
 
+.viewButton {
+  border: none;
+  cursor: pointer;
+  padding: 0px 10px;
+  border-radius: 6px;
+  color: var(--text-black-color);
+  transition: background-color 0.3s ease;
+  background-color: rgb(207, 206, 206);
+}
+
 .pagination {
   width: 100%;
   gap: 8px;

@@ -2,8 +2,8 @@
 import useFunnel from "./useFunnel";
 import styles from "./FunnelPage.module.css"
 import { Button, Input, SelectPrimitive } from "../../../components/ui";
-import BusinessTable from "../../../components/dashboard/business/BusinessTable";
 import { UsersIcon } from "../../../components/ui/Icons/SVG";
+import FunnelTable from "../../../components/dashboard/Funnel/FunnelTable";
 
 const FunnelPage = () => {
     const { searchText,
@@ -35,7 +35,7 @@ const FunnelPage = () => {
                     <Button type="submit" radius={true} variant="gradient">Search</Button>
                 </form>
                 <div>
-                    <BusinessTable filter={filters} />
+                    <FunnelTable filter={filters} />
                 </div>
             </section>
 

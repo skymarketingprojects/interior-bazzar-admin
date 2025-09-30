@@ -5,6 +5,7 @@ import type {
   BusinessSearchResType,
   GetPaginatedAdminLeadsType,
   GetPaginatedAdminBusinessesType,
+  GetPaginatedFunnelLeadType,
 } from "../../../types/reqResType";
 import { logger } from "../../../utils/logger";
 import type { AdminLeadType, BusinessType } from "../../../types/content";
@@ -24,6 +25,18 @@ export class AdminService {
     try {
       const url = `${appUrl.admin}/query/${pageNo}/${pageSize}/`;
       const response: ApiResponseType<GetPaginatedAdminLeadsType> =
+        await apiService.getGetApiResponse(url);
+      return response;
+    } catch (error) {
+      logger.error("Error fetching leads:", error);
+      throw error;
+    }
+  }
+
+  static async fetchFunnelLeads(pageNo: number, pageSize: number) {
+    try {
+      const url = `${appUrl.admin}/funnel/${pageNo}/${pageSize}/`;
+      const response: ApiResponseType<GetPaginatedFunnelLeadType> =
         await apiService.getGetApiResponse(url);
       return response;
     } catch (error) {

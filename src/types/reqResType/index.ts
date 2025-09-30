@@ -3,6 +3,7 @@ import type {
   AdminBusinessListType,
   AdminLeadType,
   BusinessCardProps,
+  FunnelLeadType,
 } from "../content";
 import type { BlogType } from "../global";
 /* ############################################################################################## */
@@ -36,6 +37,12 @@ export interface GetPaginatedAdminBusinessesType {
   hasNext: boolean;
   totalPages: number;
   businesses: AdminBusinessListType[];
+}
+export interface GetPaginatedFunnelLeadType {
+  pageNo: number;
+  hasNext: boolean;
+  totalPages: number;
+  leads: FunnelLeadType[];
 }
 
 /* ############################################################################################## */

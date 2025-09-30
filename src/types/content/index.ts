@@ -6,6 +6,11 @@ export interface LeadFilterType {
   sortBy: string;
   searchText: string;
 }
+
+export interface TableFilterType {
+  sortBy: string;
+  searchText: string;
+}
 /*###############################################################################*/
 
 export interface PlanType {
@@ -57,6 +62,17 @@ export interface AdminLeadType {
   country: string;
   city: string;
   assigned: string;
+}
+
+export interface FunnelLeadType {
+  id: number;
+  name: string;
+  companyName: string;
+  email: string;
+  phone: string;
+  planType: string;
+  plan: string;
+  intrest: string;
 }
 
 export interface AdminBusinessListType {

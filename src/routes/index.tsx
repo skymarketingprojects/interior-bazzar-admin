@@ -14,6 +14,7 @@ import LeadDashboard from "../pages/dashboard/Leads";
 import Businessses from "../pages/dashboard/Businesses";
 import Analytics from "../pages/dashboard/Analytics";
 import ImageUpload from "../pages/dashboard/ImageUpload";
+import FunnelPage from "../pages/dashboard/Funnel";
 
 const UserRoutes = () => {
   const { loading } = useInitUser();
@@ -67,6 +68,14 @@ const UserRoutes = () => {
         element: (
           <ProtectedRoute>
             <ImageUpload />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: PAGES.ADMIN_FUNNEL_LEADS,
+        element: (
+          <ProtectedRoute>
+            <FunnelPage />
           </ProtectedRoute>
         ),
       },

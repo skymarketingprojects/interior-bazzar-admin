@@ -33,6 +33,12 @@ const useAdmin = () => {
       icon: SpreadSheetIcon,
       subLinks: [],
     },
+    {
+      label: "Funnel Leads",
+      url: PAGES.ADMIN_FUNNEL_LEADS,
+      icon: SpreadSheetIcon,
+      subLinks: [],
+    },
   ]);
 
   const { activeLink } = useMemo(() => {

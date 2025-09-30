@@ -30,10 +30,10 @@ const useSignin = () => {
       showAlert("Cannt login without username: ", "warning");
       return;
     }
-    if (!formdata.password) {
-      showAlert("Cannt login without password ", "warning");
-      return;
-    }
+    // if (!formdata.password) {
+    //   showAlert("Cannt login without password ", "warning");
+    //   return;
+    // }
     if (!Validator.validateUsername(formdata.username)) {
       showAlert("Invalid username", "warning");
       return;

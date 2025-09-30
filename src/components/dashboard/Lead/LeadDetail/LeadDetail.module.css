@@ -5,10 +5,10 @@
 }
 
 .heading {
-  margin-bottom: 12px;
+  color: #333;
   font-size: 18px;
   font-weight: 600;
-  color: #333;
+  margin-bottom: 12px;
 }
 
 .table {
@@ -34,12 +34,4 @@
 
 .table tr:nth-child(even) {
   background-color: #fafafa;
-}
-
-/* Specific multi-line cell styling */
-.multiline {
-  white-space: pre-wrap; /* preserve newline characters */
-  word-break: break-word;
-  line-height: 1.4;
-  max-width: 100%;
 }

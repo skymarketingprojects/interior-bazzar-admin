@@ -37,6 +37,7 @@ export const useImageUploader = ({
       });
 
       onUploadComplete?.(fileUrl);
+      setUploadProgress(0);
       return fileUrl;
     } catch (error) {
       logger.error("Image upload error:", error);

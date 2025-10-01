@@ -1,4 +1,3 @@
-import { useState, useMemo } from "react";
 import {
     BarChart,
     Bar,
@@ -9,61 +8,18 @@ import {
     ResponsiveContainer,
 } from "recharts";
 import styles from "./UserSignupsBarChart.module.css";
+import { useSignupBarChart } from "./useSignupBarChart";
 
-// Define the shape of each data entry
-export interface SignupData {
-    date: string; // ISO "YYYY-MM-DD"
-    signups: number;
-    paid: number;
-    active: number;
-}
+export const UserSignupsBarChart = () => {
 
-interface Props {
-    data: SignupData[];
-}
-
-type FilterType = "daily" | "weekly" | "monthly";
-
-export const UserSignupsBarChart: React.FC<Props> = ({ data }) => {
-    const [filter, setFilter] = useState<FilterType>("daily");
-
-    // 🔹 Transform data based on filter
-    const filteredData = useMemo(() => {
-        if (filter === "daily") {
-            return data;
-        }
-
-        if (filter === "weekly") {
-            const grouped: SignupData[] = [];
-            for (let i = 0; i < data.length; i += 7) {
-                const slice = data.slice(i, i + 7);
-                grouped.push({
-                    date: `${slice[0].date} - ${slice[slice.length - 1].date}`,
-                    signups: slice.reduce((a, c) => a + c.signups, 0),
-                    paid: slice.reduce((a, c) => a + c.paid, 0),
-                    active: slice.reduce((a, c) => a + c.active, 0),
-                });
-            }
-            return grouped;
-        }
-
-        if (filter === "monthly") {
-            const map = new Map<string, SignupData>();
-            data.forEach((d) => {
-                const month = d.date.slice(0, 7); // "YYYY-MM"
-                if (!map.has(month)) {
-                    map.set(month, { date: month, signups: 0, paid: 0, active: 0 });
-                }
-                const item = map.get(month)!;
-                item.signups += d.signups;
-                item.paid += d.paid;
-                item.active += d.active;
-            });
-            return Array.from(map.values());
-        }
-
-        return data;
-    }, [filter, data]);
+    const {
+        page,
+        filter,
+        setPage,
+        totalPages,
+        paginatedData,
+        handleFilterChange,
+    } = useSignupBarChart();
 
     return (
         <div className={styles.container}>
@@ -73,26 +29,27 @@ export const UserSignupsBarChart: React.FC<Props> = ({ data }) => {
             <div className={styles.filters}>
                 <button
                     className={`${styles.button} ${filter === "daily" ? styles.active : ""}`}
-                    onClick={() => setFilter("daily")}
+                    onClick={() => handleFilterChange("daily")}
                 >
                     Daily
                 </button>
                 <button
                     className={`${styles.button} ${filter === "weekly" ? styles.active : ""}`}
-                    onClick={() => setFilter("weekly")}
+                    onClick={() => handleFilterChange("weekly")}
                 >
                     Weekly
                 </button>
                 <button
                     className={`${styles.button} ${filter === "monthly" ? styles.active : ""}`}
-                    onClick={() => setFilter("monthly")}
+                    onClick={() => handleFilterChange("monthly")}
                 >
                     Monthly
                 </button>
             </div>
 
+            {/* Chart */}
             <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={filteredData}>
+                <BarChart data={paginatedData}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="date" />
                     <YAxis />
@@ -102,6 +59,27 @@ export const UserSignupsBarChart: React.FC<Props> = ({ data }) => {
                     <Bar dataKey="active" fill="#801616ff" />
                 </BarChart>
             </ResponsiveContainer>
+
+            {/* 🔹 Pagination controls */}
+            <div className={styles.pagination}>
+                <button
+                    className={styles.pageBtn}
+                    disabled={page === 1}
+                    onClick={() => setPage(page - 1)}
+                >
+                    Prev
+                </button>
+                <span className={styles.pageInfo}>
+                    Page {page} of {totalPages}
+                </span>
+                <button
+                    className={styles.pageBtn}
+                    disabled={page === totalPages}
+                    onClick={() => setPage(page + 1)}
+                >
+                    Next
+                </button>
+            </div>
         </div>
     );
 };

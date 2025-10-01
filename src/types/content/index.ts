@@ -12,10 +12,18 @@ export interface TableFilterType {
 }
 
 /*###########    A N A L Y T I C S    ####################################################################*/
+
 export interface MetricCardType {
   title: string;
   value: number;
   colorHex?: string;
+}
+
+export interface SignupData {
+  date: string; // ISO "YYYY-MM-DD"
+  signups: number;
+  paid: number;
+  active: number;
 }
 
 /*###########    E      N      D    ####################################################################*/

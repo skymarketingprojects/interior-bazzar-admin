@@ -2,8 +2,10 @@ import useAnalytics from './useAnalytics';
 import styles from './Analytics.module.css';
 import { UsersIcon } from '../../../components/ui/Icons/SVG';
 import AnalyticsStat from '../../../components/analytics/AnalyticsStat';
+import { UserAnalytics } from '../../../components/analytics/UserAnalytics';
 const Analytics = () => {
     const { noOfUsers } = useAnalytics();
+
     return (
         <section className={styles.leadDashboardContainer}>
             <div className={`${styles.sectionHeader}`}>
@@ -47,6 +49,10 @@ const Analytics = () => {
                     ]}
                 />
             </div>
+            <div>
+                <UserAnalytics />
+            </div>
+
         </section>
 
     )

@@ -4,9 +4,9 @@
 }
 .sectionHeader {
   display: flex;
+  margin: 10px 0px;
   gap: var(--gap-lg);
   align-items: center;
-  margin: 10px 0px;
 }
 .icon {
   aspect-ratio: 1/1;

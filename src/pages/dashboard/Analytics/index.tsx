@@ -49,7 +49,7 @@ const Analytics = () => {
                     ]}
                 />
             </div>
-            <div>
+            <div >
                 <UserAnalytics />
             </div>
 

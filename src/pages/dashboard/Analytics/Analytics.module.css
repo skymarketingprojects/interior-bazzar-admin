@@ -1,6 +1,7 @@
 .leadDashboardContainer {
   padding: 0px var(--padding-xxl);
   max-height: 100%;
+  overflow: auto;
 }
 .sectionHeader {
   display: flex;

@@ -1,4 +1,12 @@
-const MetricCard = ({ title, value, color }) => (
+import type { MetricCardType } from "../../../types/content";
+
+interface MetricCard {
+    title: string;
+    value: number;
+    color: string;
+}
+
+const MetricCard = ({ title, value, color }: MetricCard) => (
     <div style={{
         padding: '1rem',
         background: '#fff',
@@ -12,11 +20,18 @@ const MetricCard = ({ title, value, color }) => (
     </div>
 );
 
-export const MetricCards = ({ data }) => (
+export const MetricCards = ({ data }: { data: MetricCardType[] }) => (
     <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem' }}>
-        <MetricCard title="Total Users" value={data.total} color="#4CAF50" />
-        <MetricCard title="Active Users" value={data.active} color="#2196F3" />
-        <MetricCard title="New Users Today" value={data.newToday} color="#FFC107" />
-        <MetricCard title="Churned Users" value={data.churned} color="#F44336" />
+
+        {data.map((metric, index) =>
+            <MetricCard
+                key={index}
+                title={metric.title}
+                value={metric.value}
+                color={metric.colorHex || '#007BFF'}
+            />)
+        }
+
+
     </div>
 );

@@ -6,12 +6,19 @@ export interface LeadFilterType {
   sortBy: string;
   searchText: string;
 }
-
 export interface TableFilterType {
   sortBy: string;
   searchText: string;
 }
-/*###############################################################################*/
+
+/*###########    A N A L Y T I C S    ####################################################################*/
+export interface MetricCardType {
+  title: string;
+  value: number;
+  colorHex?: string;
+}
+
+/*###########    E      N      D    ####################################################################*/
 
 export interface PlanType {
   id: number;

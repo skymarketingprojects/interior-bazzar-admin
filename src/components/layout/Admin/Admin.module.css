@@ -47,7 +47,7 @@
 .content {
   flex: 1;
   width: 100%;
-  overflow-y: hidden auto;
+  overflow: auto auto;
   margin: auto auto;
 }
 

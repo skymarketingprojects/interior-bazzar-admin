@@ -1,15 +1,7 @@
 import { useState, useMemo } from "react";
 export type FilterType = "daily" | "weekly" | "monthly";
 import type { SignupData } from "../../../types/content";
-interface UseSignupChartDataResult {
-  filter: FilterType;
-  setFilter: (filter: FilterType) => void;
-  page: number;
-  setPage: (page: number) => void;
-  paginatedData: SignupData[];
-  totalPages: number;
-  handleFilterChange: (filter: FilterType) => void;
-}
+import { DateFormatter } from "../helper";
 const userSignups = [
   { date: "2025-07-01", signups: 50, paid: 12, active: 8 },
   { date: "2025-07-02", signups: 42, paid: 13, active: 11 },
@@ -106,16 +98,17 @@ const userSignups = [
   { date: "2025-10-01", signups: 37, paid: 11, active: 8 },
 ];
 
-export const useSignupBarChart = (
-  pageSize: number = 7
-): UseSignupChartDataResult => {
+export const useSignupBarChart = (pageSize: number = 7) => {
   const [filter, setFilter] = useState<FilterType>("daily");
   const [page, setPage] = useState<number>(1);
   const data = userSignups;
   // 🔹 Transform data based on filter
   const filteredData = useMemo(() => {
     if (filter === "daily") {
-      return data;
+      return data.map((d) => ({
+        ...d,
+        date: DateFormatter.monthDay(d.date), // show "Sep 25" instead of "2025-09-25"
+      }));
     }
 
     if (filter === "weekly") {
@@ -123,7 +116,9 @@ export const useSignupBarChart = (
       for (let i = 0; i < data.length; i += 7) {
         const slice = data.slice(i, i + 7);
         grouped.push({
-          date: `${slice[0].date} - ${slice[slice.length - 1].date}`,
+          date: `${DateFormatter.monthDay(
+            slice[0].date
+          )} - ${DateFormatter.monthDay(slice[slice.length - 1].date)}`,
           signups: slice.reduce((a, c) => a + c.signups, 0),
           paid: slice.reduce((a, c) => a + c.paid, 0),
           active: slice.reduce((a, c) => a + c.active, 0),
@@ -135,15 +130,30 @@ export const useSignupBarChart = (
     if (filter === "monthly") {
       const map = new Map<string, SignupData>();
       data.forEach((d) => {
-        const month = d.date.slice(0, 7); // "YYYY-MM"
-        if (!map.has(month)) {
-          map.set(month, { date: month, signups: 0, paid: 0, active: 0 });
+        const monthKey = d.date.slice(0, 7); // "YYYY-MM"
+
+        if (!map.has(monthKey)) {
+          // get first and last date of the month in your data
+          const monthDates = data.filter((item) =>
+            item.date.startsWith(monthKey)
+          );
+          const firstDate = monthDates[0].date;
+          const lastDate = monthDates[monthDates.length - 1].date;
+
+          // format using DateFormatter: "01 Jul - 31 Jul"
+          const label = `${DateFormatter.monthDay(
+            firstDate
+          )} - ${DateFormatter.monthDay(lastDate)}`;
+
+          map.set(monthKey, { date: label, signups: 0, paid: 0, active: 0 });
         }
-        const item = map.get(month)!;
+
+        const item = map.get(monthKey)!;
         item.signups += d.signups;
         item.paid += d.paid;
         item.active += d.active;
       });
+
       return Array.from(map.values());
     }
 
@@ -173,3 +183,13 @@ export const useSignupBarChart = (
     handleFilterChange,
   };
 };
+
+// interface UseSignupChartDataResult {
+//   filter: FilterType;
+//   setFilter: (filter: FilterType) => void;
+//   page: number;
+//   setPage: (page: number) => void;
+//   paginatedData: SignupData[];
+//   totalPages: number;
+//   handleFilterChange: (filter: FilterType) => void;
+// }

@@ -174,12 +174,12 @@ export const useSignupBarChart = (pageSize: number = 7) => {
   };
 
   return {
-    filter,
-    setFilter,
     page,
+    filter,
     setPage,
-    paginatedData,
+    setFilter,
     totalPages,
+    paginatedData,
     handleFilterChange,
   };
 };

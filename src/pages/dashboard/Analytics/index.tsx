@@ -4,8 +4,10 @@ import { UsersIcon } from '../../../components/ui/Icons/SVG';
 import AnalyticsStat from '../../../components/analytics/AnalyticsStat';
 import { UserAnalytics } from '../../../components/analytics/UserAnalytics';
 const Analytics = () => {
-    const { noOfUsers } = useAnalytics();
-
+    const { loading, noOfUsers, analytics } = useAnalytics();
+    if (loading) {
+        return <div>Loading...</div>
+    }
     return (
         <section className={styles.leadDashboardContainer}>
             <div className={`${styles.sectionHeader}`}>
@@ -13,41 +15,13 @@ const Analytics = () => {
                 <p className={`${styles.sectionPara}`}>Total users : <span>{noOfUsers}</span></p>
             </div>
             <div style={{ display: "flex", gap: "20px" }}>
-                {/* Single number */}
-                <AnalyticsStat
-                    icon={UsersIcon}
-                    title="Total Clients"
-                    primaryValue="5,000"
-                />
 
-                {/* Two numbers (business active/inactive) */}
-                <AnalyticsStat
-                    icon={UsersIcon}
-                    title="Total Business"
-                    primaryValue="20"
-                    secondaryValues={[
-                        { label: "Active", value: 20, color: "green" },
-                        { label: "Active", value: 20, color: "green" },
-                    ]}
-                />
+                {analytics.map((item) => <AnalyticsStat
+                    icon={item.icon}
+                    title={item.name}
+                    primaryValue={item.value}
+                />)}
 
-                {/* Single number again */}
-                <AnalyticsStat
-                    icon={UsersIcon}
-                    title="Total Users"
-                    primaryValue="5,000"
-                />
-
-                {/* Two numbers (upgrades/inactive today) */}
-                <AnalyticsStat
-                    icon={UsersIcon}
-                    title="Today"
-                    primaryValue="70"
-                    secondaryValues={[
-                        { label: "Upgrade", value: 70, color: "blue" },
-                        { label: "Inactive", value: 50, color: "red" },
-                    ]}
-                />
             </div>
             <div >
                 <UserAnalytics />

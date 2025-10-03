@@ -97,6 +97,17 @@ export class AdminService {
   }
 
   /* Get  Analytics here  */
+  static async getAllAnalytics() {
+    try {
+      const url = `${appUrl.admin}/analytics/`;
+      const response: ApiResponseType<any> = await apiService.getGetApiResponse(
+        url
+      );
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
   static async getBusinessAnalytics() {
     try {
       const url = `${appUrl.admin}/chart/`;
@@ -107,7 +118,6 @@ export class AdminService {
       throw error;
     }
   }
-
   static async getLeadsAnalytics() {
     try {
       const url = `${appUrl.admin}/leads/`;

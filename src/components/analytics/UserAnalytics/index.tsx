@@ -17,13 +17,13 @@ export const userMetrics: MetricCardType[] = [
 
 
 export const UserAnalytics = () => {
-    return (<>
-
-        <div >
-            <UserGrowthChart />
-            <UserSignupsBarChart />
-            <QueriesPieChart />
-        </div>
-    </>
+    return (
+        <>
+            <div >
+                <UserGrowthChart />
+                <UserSignupsBarChart />
+                <QueriesPieChart />
+            </div>
+        </>
     );
 };

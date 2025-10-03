@@ -54,9 +54,9 @@ export const UserSignupsBarChart = () => {
                     <XAxis dataKey="date" />
                     <YAxis />
                     <Tooltip />
-                    <Bar dataKey="signups" fill="#2196F3" />
-                    <Bar dataKey="paid" fill="#0dff00ff" />
-                    <Bar dataKey="active" fill="#801616ff" />
+                    <Bar dataKey="clients" fill="#2196F3" />
+                    <Bar dataKey="businesses" fill="#0dff00ff" />
+                    <Bar dataKey="users" fill="#801616ff" />
                 </BarChart>
             </ResponsiveContainer>
 

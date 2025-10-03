@@ -30,7 +30,7 @@ const LeadTable = React.memo(({ filter }: { filter: LeadFilterType }) => {
         if (!value) return "--";
         return value;
     };
-    logger.log(leads)
+
     return (
         <div className={styles.wrapper}>
             <table className={styles.table}>

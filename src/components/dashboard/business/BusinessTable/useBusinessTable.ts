@@ -79,9 +79,7 @@ const useBusinessTable = (filter: BusinessFilterType) => {
 
   useEffect(() => {
     fetchBusinesses();
-    return () => {
-      logger.log("this is it:", filter);
-    };
+    return () => {};
   }, [pageNo]);
   const incrementPage = () => {
     if (pageNo < totalPages) {

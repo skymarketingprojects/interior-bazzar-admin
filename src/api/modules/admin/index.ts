@@ -6,9 +6,14 @@ import type {
   GetPaginatedAdminLeadsType,
   GetPaginatedAdminBusinessesType,
   GetPaginatedFunnelLeadType,
+  GetPaginatedBusinessAnalytics,
 } from "../../../types/reqResType";
 import { logger } from "../../../utils/logger";
-import type { AdminLeadType, BusinessType } from "../../../types/content";
+import type {
+  AdminLeadType,
+  BusinessType,
+  SignupData,
+} from "../../../types/content";
 
 export class AdminService {
   static async fetchTotalUsers() {
@@ -75,6 +80,7 @@ export class AdminService {
       throw error;
     }
   }
+
   static async assignLeadToBusiness(data: {
     leadId: number;
     businessId: number;
@@ -83,6 +89,18 @@ export class AdminService {
       const url = `${appUrl.admin}/lead/assign/`;
       const response: ApiResponseType<AdminLeadType> =
         await apiService.getPostApiResponse(url, data);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  /* Get  Analytics here  */
+  static async getBusinessAnalytics() {
+    try {
+      const url = `${appUrl.admin}/chart/`;
+      const response: ApiResponseType<SignupData[]> =
+        await apiService.getGetApiResponse(url);
       return response;
     } catch (error) {
       throw error;

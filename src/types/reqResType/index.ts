@@ -4,6 +4,7 @@ import type {
   AdminLeadType,
   BusinessCardProps,
   FunnelLeadType,
+  SignupData,
 } from "../content";
 import type { BlogType } from "../global";
 /* ############################################################################################## */
@@ -26,6 +27,12 @@ export interface RequestOptions {
   signal?: AbortSignal;
 }
 // admin panel here
+
+export interface BusinessAnalyticsRes {
+  daily: SignupData[];
+  monthly: SignupData[];
+  weekly: SignupData[];
+}
 export interface GetPaginatedAdminLeadsType {
   pageNo: number;
   hasNext: boolean;
@@ -39,6 +46,19 @@ export interface GetPaginatedAdminBusinessesType {
   businesses: AdminBusinessListType[];
 }
 export interface GetPaginatedFunnelLeadType {
+  pageNo: number;
+  hasNext: boolean;
+  totalPages: number;
+  leads: FunnelLeadType[];
+}
+
+export interface GetPaginatedBusinessAnalytics {
+  pageNo: number;
+  hasNext: boolean;
+  totalPages: number;
+  businessAnalytics: BusinessAnalyticsRes;
+}
+export interface GetPaginated {
   pageNo: number;
   hasNext: boolean;
   totalPages: number;

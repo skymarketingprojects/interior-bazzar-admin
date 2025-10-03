@@ -20,10 +20,10 @@ export interface MetricCardType {
 }
 
 export interface SignupData {
-  date: string; // ISO "YYYY-MM-DD"
-  signups: number;
-  paid: number;
-  active: number;
+  date: string;
+  clients: number;
+  businesses: number;
+  users: number;
 }
 
 /*###########    E      N      D    ####################################################################*/

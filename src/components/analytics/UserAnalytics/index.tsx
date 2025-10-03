@@ -2,7 +2,7 @@ import styles from "./UserAnalytics.module.css"
 import { MetricCards } from '../MetricCards';
 import { UserGrowthChart } from '../UserGrowthChart';
 import { UserSignupsBarChart } from '../UserSignupsBarChart';
-import { UserPlanPieChart } from '../UserPlanPieChart';
+import { QueriesPieChart } from '../QueriesPieChart';
 import type { MetricCardType } from "../../../types/content";
 
 export const userMetrics: MetricCardType[] = [
@@ -22,12 +22,7 @@ export const userGrowthData = [
     { date: '2025-10-01', users: 4220 },
 ];
 
-export const userPlanData = [
-    { name: 'Assigned Queries', value: 3500 },
-    { name: 'Unassigned Queries', value: 4000 },
-    { name: 'Platoform Queries', value: 1570 },
-    { name: 'Business Queries', value: 5800 },
-];
+
 
 export const UserAnalytics = () => {
     return (<>
@@ -35,7 +30,7 @@ export const UserAnalytics = () => {
         <div >
             <UserGrowthChart data={userGrowthData} />
             <UserSignupsBarChart />
-            <UserPlanPieChart data={userPlanData} />
+            <QueriesPieChart />
         </div>
     </>
     );

@@ -13,14 +13,23 @@ import { useSignupBarChart } from "./useSignupBarChart";
 export const UserSignupsBarChart = () => {
 
     const {
+
         page,
         filter,
+        loading,
         setPage,
         totalPages,
         paginatedData,
         handleFilterChange,
     } = useSignupBarChart();
 
+    if (loading) {
+        return (
+            <div style={{ background: '#fff', padding: '1rem', borderRadius: '8px', textAlign: 'center' }}>
+                <h3>Loading...</h3>
+            </div>
+        );
+    }
     return (
         <div className={styles.container}>
             <h3 className={styles.title}>User Signups</h3>

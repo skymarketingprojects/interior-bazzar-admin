@@ -6,7 +6,7 @@ import type {
   GetPaginatedAdminLeadsType,
   GetPaginatedAdminBusinessesType,
   GetPaginatedFunnelLeadType,
-  GetPaginatedBusinessAnalytics,
+  GetLeadsAnalytics,
 } from "../../../types/reqResType";
 import { logger } from "../../../utils/logger";
 import type {
@@ -100,6 +100,17 @@ export class AdminService {
     try {
       const url = `${appUrl.admin}/chart/`;
       const response: ApiResponseType<SignupData[]> =
+        await apiService.getGetApiResponse(url);
+      return response;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async getLeadsAnalytics() {
+    try {
+      const url = `${appUrl.admin}/leads/`;
+      const response: ApiResponseType<GetLeadsAnalytics> =
         await apiService.getGetApiResponse(url);
       return response;
     } catch (error) {

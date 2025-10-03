@@ -107,7 +107,6 @@ export interface BusinessType {
   badge: string;
   bio: string;
   business_name: string;
-  buss_id: number;
   category: string;
   city: string;
   country: string;

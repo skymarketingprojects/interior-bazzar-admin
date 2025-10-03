@@ -65,6 +65,7 @@ const useAssignLead = (
   const fetchBusinessDetail = async (businessId: number) => {
     await runAsync("detail", async () => {
       const res = await AdminService.getBusinessDetail(businessId);
+      if (!res.response) return;
       setSelectedBusiness(res.data);
       setSearchResults([]);
       setSearchText("");
@@ -102,7 +103,7 @@ const useAssignLead = (
     await runAsync("assign", async () => {
       const data = {
         leadId: lead.id,
-        businessId: selectedBusiness.buss_id,
+        businessId: selectedBusiness.id,
       };
       const res = await AdminService.assignLeadToBusiness(data);
       if (!res.response) return;

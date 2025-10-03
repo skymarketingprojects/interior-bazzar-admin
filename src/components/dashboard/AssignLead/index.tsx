@@ -103,7 +103,7 @@ const AssignLead = ({ lead, onAssigned }: { lead: AdminLeadType, onAssigned: (le
                     {selectedBusiness ? <div className={styles.previewCard}>
                         <div className={styles.coverWrap}>
                             <img
-                                src={getVal(selectedBusiness || {}, "cover_image_url", "coverImage", "cover") || PLACEHOLDER}
+                                src={getVal(selectedBusiness || {}, "coverImageUrl") || PLACEHOLDER}
                                 alt={getVal(selectedBusiness || {}, "businessName", "business_name", "name") as string}
                                 className={styles.coverImage}
                                 onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
@@ -161,34 +161,12 @@ const AssignLead = ({ lead, onAssigned }: { lead: AdminLeadType, onAssigned: (le
                                 </div>
                             </div>
                         </div>
-                        {/* <div className={styles.quickCard}>
-                            <h4 className={styles.cardTitle}>Quick actions</h4>
-                            <div className={styles.quickList}>
-                                <Button radius onClick={() => selectedBusiness && openProfile(selectedBusiness)} disabled={!selectedBusiness}>
-                                    Open Business Location
-                                </Button>
-                                <Button
-                                    radius
-                                    onClick={() => selectedBusiness && copyToClipboard(getVal(selectedBusiness, "whatsapp") || "")}
-                                    disabled={!selectedBusiness}
-                                >
-                                    Copy Whatsapp
-                                </Button>
-                                <Button radius onClick={() => copyToClipboard(JSON.stringify(selectedBusiness || {}))}>
-                                    Copy Business JSON
-                                </Button>
-                            </div>
-                        </div> */}
+
                     </div>
                     <div className={styles.assignRow}>
                         <Button radius onClick={handleAssignLead} disabled={loading?.assign || !selectedBusiness}>
                             {loading?.assign ? "Assigning..." : "Assign Lead"}
                         </Button>
-
-
-                        {/* <Button radius onClick={() => copyToClipboard(JSON.stringify(selectedBusiness || {}, null, 2))}>
-                                    Copy JSON
-                                </Button> */}
                     </div>
                 </div>
             </div>

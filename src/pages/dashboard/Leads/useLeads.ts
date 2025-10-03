@@ -1,8 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { LeadFilterType } from "../../../types/content";
+import { AdminService } from "../../../api/modules/admin";
+import { logger } from "../../../utils/logger";
 
 const useLeads = () => {
-  const [noOfUsers] = useState<number>(25478);
+  const [noOfUsers, setNoOfUsers] = useState<number>(0); // Example static data, replace with actual logic
+  const fetchUsers = async () => {
+    try {
+      const res = await AdminService.fetchTotalUsers();
+      if (!res.response) {
+        logger.error("Failed to fetch total users");
+        return;
+      }
+      setNoOfUsers(res.data.totalUsers);
+    } catch (e) {
+      logger.error("Error while setting total User: ", e);
+    }
+  };
+  useEffect(() => {
+    fetchUsers();
+  }, []);
   const [selectOptions] = useState<string[]>(["All", "Active"]);
   const [selectedOption, setSelectedOption] = useState<string>("");
   const [filters, setFilters] = useState<LeadFilterType>({

@@ -40,7 +40,7 @@ export const QueriesPieChart = () => {
                         outerRadius={100}
                         label
                     >
-                        {leadsData.map((entry: UserPlanData, index: number) => (
+                        {leadsData.map((_entry: UserPlanData, index: number) => (
                             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                         ))}
                     </Pie>

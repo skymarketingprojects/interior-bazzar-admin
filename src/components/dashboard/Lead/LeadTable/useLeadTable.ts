@@ -5,7 +5,7 @@ import type {
   AdminLeadType,
   BusinessFilterType,
 } from "../../../../types/content";
-const useLeadTable = (filters: BusinessFilterType) => {
+const useLeadTable = (_filters: BusinessFilterType) => {
   const [pageSize] = useState<number>(20);
   const [pageNo, setPageNo] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);

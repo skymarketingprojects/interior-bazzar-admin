@@ -5,7 +5,6 @@ import styles from "./LeadTable.module.css";
 import { useModal } from "../../../../context/ModalContext";
 import type { AdminLeadType, LeadFilterType } from "../../../../types/content";
 import LeadDetail from "../LeadDetail";
-import { logger } from "../../../../utils/logger";
 const LeadTable = React.memo(({ filter }: { filter: LeadFilterType }) => {
 
     const {

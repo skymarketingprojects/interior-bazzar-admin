@@ -9,7 +9,7 @@ export const UserGrowthChart = () => {
         page,
         filter,
         setPage,
-        setFilter,
+
         totalPages,
         handleFilterChange,
     } = useUserGrowthChart();

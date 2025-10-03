@@ -5,7 +5,7 @@ import type {
   AdminBusinessListType,
   BusinessFilterType,
 } from "../../../../types/content";
-const useBusinessTable = (filter: BusinessFilterType) => {
+const useBusinessTable = (_filter: BusinessFilterType) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [businesses, setBusinesses] = useState<AdminBusinessListType[]>([
     {

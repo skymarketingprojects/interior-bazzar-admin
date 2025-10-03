@@ -1,5 +1,5 @@
-import styles from "./UserAnalytics.module.css"
-import { MetricCards } from '../MetricCards';
+// import styles from "./UserAnalytics.module.css"
+// import { MetricCards } from '../MetricCards';
 import { UserGrowthChart } from '../UserGrowthChart';
 import { UserSignupsBarChart } from '../UserSignupsBarChart';
 import { QueriesPieChart } from '../QueriesPieChart';

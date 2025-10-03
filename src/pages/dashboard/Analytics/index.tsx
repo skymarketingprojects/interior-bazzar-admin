@@ -16,11 +16,12 @@ const Analytics = () => {
             </div>
             <div style={{ display: "flex", gap: "20px" }}>
 
-                {analytics.map((item) => <AnalyticsStat
-                    icon={item.icon}
-                    title={item.name}
-                    primaryValue={item.value}
-                />)}
+                {analytics.map((item) =>
+                    <AnalyticsStat
+                        icon={item.icon}
+                        title={item.name}
+                        primaryValue={item.value}
+                    />)}
 
             </div>
             <div >

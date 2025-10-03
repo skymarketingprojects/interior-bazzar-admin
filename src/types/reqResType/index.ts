@@ -64,11 +64,15 @@ export interface GetPaginated {
   totalPages: number;
   leads: FunnelLeadType[];
 }
-export interface GetLeadsAnalytics {
+export interface LeadsAnalytics {
   unassignedLeads: number;
   assignedLeads: number;
   totalLeads: number;
   todayLeads: number;
+}
+export interface UserGrowthAnalytics {
+  date: string;
+  users: number;
 }
 
 /* ############################################################################################## */

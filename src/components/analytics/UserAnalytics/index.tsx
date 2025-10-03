@@ -12,23 +12,15 @@ export const userMetrics: MetricCardType[] = [
     { title: "Churned Users", value: 20, colorHex: "#0099ff" },
 ];
 
-export const userGrowthData = [
-    { date: '2025-09-25', users: 3900 },
-    { date: '2025-09-26', users: 3950 },
-    { date: '2025-09-27', users: 4000 },
-    { date: '2025-09-28', users: 4050 },
-    { date: '2025-09-29', users: 4100 },
-    { date: '2025-09-30', users: 4180 },
-    { date: '2025-10-01', users: 4220 },
-];
+
 
 
 
 export const UserAnalytics = () => {
     return (<>
-        {/* <MetricCards data={userMetrics} /> */}
+
         <div >
-            <UserGrowthChart data={userGrowthData} />
+            <UserGrowthChart />
             <UserSignupsBarChart />
             <QueriesPieChart />
         </div>

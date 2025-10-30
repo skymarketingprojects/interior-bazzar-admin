@@ -2,7 +2,6 @@ import type { AdminLeadType } from "../../../types/content";
 import useAssignLead from "./useAssignLead";
 import styles from "./AssignLead.module.css";
 import { Button, Input } from "../../ui";
-import { logger } from "../../../utils/logger";
 const AssignLead = ({ lead, onAssigned }: { lead: AdminLeadType, onAssigned: (lead: AdminLeadType) => void }) => {
     const {
         loading,
@@ -22,15 +21,15 @@ const AssignLead = ({ lead, onAssigned }: { lead: AdminLeadType, onAssigned: (le
     };
 
 
-    const formatDate = (iso?: string) => {
-        if (!iso) return "—";
-        try {
-            const d = new Date(iso);
-            return d.toLocaleString();
-        } catch {
-            return iso;
-        }
-    };
+    // const formatDate = (iso?: string) => {
+    //     if (!iso) return "—";
+    //     try {
+    //         const d = new Date(iso);
+    //         return d.toLocaleString();
+    //     } catch {
+    //         return iso;
+    //     }
+    // };
 
 
 
@@ -103,7 +102,7 @@ const AssignLead = ({ lead, onAssigned }: { lead: AdminLeadType, onAssigned: (le
                 <div className={styles.middleColumn}>
                     {selectedBusiness ?
                         <div className={styles.previewCard}>
-                            {logger.log("selectedBusiness", selectedBusiness)}
+
                             <div className={styles.coverWrap}>
                                 <img
                                     src={getVal(selectedBusiness || {}, "coverImageUrl") || PLACEHOLDER}

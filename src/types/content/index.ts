@@ -106,11 +106,11 @@ export interface BusinessType {
   id: number;
   badge: string;
   bio: string;
-  business_name: string;
+  businessName: string;
   category: string;
   city: string;
   country: string;
-  cover_image_url: string;
+  coverImageUrl: string;
   gst: string;
   location_link: string;
   pin_code: string;

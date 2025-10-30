@@ -2,6 +2,7 @@ import type { AdminLeadType } from "../../../types/content";
 import useAssignLead from "./useAssignLead";
 import styles from "./AssignLead.module.css";
 import { Button, Input } from "../../ui";
+import { logger } from "../../../utils/logger";
 const AssignLead = ({ lead, onAssigned }: { lead: AdminLeadType, onAssigned: (lead: AdminLeadType) => void }) => {
     const {
         loading,
@@ -100,45 +101,48 @@ const AssignLead = ({ lead, onAssigned }: { lead: AdminLeadType, onAssigned: (le
                     <div className={styles.tip}>Tip: search by name, city or pin code</div>
                 </div>
                 <div className={styles.middleColumn}>
-                    {selectedBusiness ? <div className={styles.previewCard}>
-                        <div className={styles.coverWrap}>
-                            <img
-                                src={getVal(selectedBusiness || {}, "coverImageUrl") || PLACEHOLDER}
-                                alt={getVal(selectedBusiness || {}, "businessName", "business_name", "name") as string}
-                                className={styles.coverImage}
-                                onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
-                                    const t = e.currentTarget as HTMLImageElement;
-                                    t.src = PLACEHOLDER;
-                                }}
-                            />
-                        </div>
-                        <div className={styles.previewBody}>
-
-                            <div className={styles.previewHeader}>
-                                <div>
-                                    <h3 className={styles.businessTitle}>{getVal(selectedBusiness || {}, "businessName", "business_name", "name")}</h3>
-                                    <div className={styles.metaSmall}>{getVal(selectedBusiness || {}, "category", "segment")}</div>
-                                </div>
+                    {selectedBusiness ?
+                        <div className={styles.previewCard}>
+                            {logger.log("selectedBusiness", selectedBusiness)}
+                            <div className={styles.coverWrap}>
+                                <img
+                                    src={getVal(selectedBusiness || {}, "coverImageUrl") || PLACEHOLDER}
+                                    alt={getVal(selectedBusiness || {}, "businessName", "business_name", "name") as string}
+                                    className={styles.coverImage}
+                                    onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                                        const t = e.currentTarget as HTMLImageElement;
+                                        t.src = PLACEHOLDER;
+                                    }}
+                                />
                             </div>
-                            <dl className={styles.detailList}>
-                                <dt className={styles.detailDt}>City</dt>
-                                <dd className={styles.detailDd}>{getVal(selectedBusiness || {}, "city")}</dd>
+                            <div className={styles.previewBody}>
+
+                                <div className={styles.previewHeader}>
+                                    <div>
+                                        <h3 className={styles.businessTitle}>{getVal(selectedBusiness || {}, "businessName", "business_name", "name")}</h3>
+
+                                    </div>
+                                </div>
+                                {/* <dl className={styles.detailList}>
+                                    <dt className={styles.detailDt}>City</dt>
+                                    <dd className={styles.detailDd}>{getVal(selectedBusiness || {}, "city")}</dd>
 
 
-                                <dt className={styles.detailDt}>State</dt>
-                                <dd className={styles.detailDd}>{getVal(selectedBusiness || {}, "state")}</dd>
+                                    <dt className={styles.detailDt}>State</dt>
+                                    <dd className={styles.detailDd}>{getVal(selectedBusiness || {}, "state")}</dd>
 
 
-                                <dt className={styles.detailDt}>Pin</dt>
-                                <dd className={styles.detailDd}>{getVal(selectedBusiness || {}, "pin_code", "pin")}</dd>
+                                    <dt className={styles.detailDt}>Pin</dt>
+                                    <dd className={styles.detailDd}>{getVal(selectedBusiness || {}, "pin_code", "pin")}</dd>
 
 
-                                <dt className={styles.detailDt}>Last updated</dt>
-                                <dd className={styles.detailDd}>{formatDate(getVal(selectedBusiness || {}, "updated_at", "updatedAt"))}</dd>
-                            </dl>
+                                    <dt className={styles.detailDt}>Last updated</dt>
+                                    <dd className={styles.detailDd}>{formatDate(getVal(selectedBusiness || {}, "updated_at", "updatedAt"))}</dd>
+                                </dl> */}
 
+                            </div>
                         </div>
-                    </div> :
+                        :
                         <div className={styles.noBusiness}>
                             selcte business to see here
                         </div>}

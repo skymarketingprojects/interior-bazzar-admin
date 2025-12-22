@@ -7,7 +7,7 @@ type UseImageCropperProps = {
 };
 
 export const useImageCropper = ({
-  aspectRatio = 1,
+  aspectRatio,
   onCropped,
 }: UseImageCropperProps) => {
   const [file, setFile] = useState<File | null>(null);
@@ -28,12 +28,15 @@ export const useImageCropper = ({
     onCropped(cropped);
   };
 
+  const cropperKey = aspectRatio ?? "free";
+
   const CropperComponent = file ? (
     <ImageCropper
+      key={cropperKey}   // 👈 THIS IS THE FIX
       file={file}
       onCrop={handleCrop}
       onCancel={cancelCrop}
-      aspectRatio={aspectRatio}
+      {...(aspectRatio ? { aspectRatio } : {})}
     />
   ) : null;
 

@@ -11,9 +11,7 @@ const ASPECT_RATIO_OPTIONS = [
   { label: "Portrait (3/4)", value: 3 / 4 },
   { label: "Landscape (16/9)", value: 16 / 9 },
   { label: "Banner (950×250)", value: 3.8 / 1 }
-
 ];
-
 
 const useImageUpload = () => {
   const { showAlert } = useAlert();
@@ -21,14 +19,12 @@ const useImageUpload = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
 
-  const [aspectRatio, setAspectRatio] = useState<number | undefined>(undefined);
-
+  const [aspectRatio, setAspectRatio] = useState<number>(1 / 1);
 
   const handleAspectRatioChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = Number(e.target.value);
-    setAspectRatio(value === 0 ? undefined : value);
+    const { value } = e.target;
+    setAspectRatio(Number(value));
   };
-
 
   const { isImageUploading, uploadImage, uploadProgress } = useImageUploader({
     forPurpose: "StockMedia",

@@ -89,16 +89,24 @@ export interface FunnelLeadType {
   plan: string;
   intrest: string;
 }
+export interface AdminBusinessPlanType {
+  id: number;
+  name: string;
+  expiryDate: string;
+  isActive: boolean;
+  amount: string;
+}
 
 export interface AdminBusinessListType {
   id: number;
   name: string;
-  plan: string;
+  plan: AdminBusinessPlanType[]; // ✅ FIXED
   joinAt: string;
   totalLeads: number;
   assignedLeads: number;
   platformLeads: number;
 }
+
 
 export type AdminLeadFormType = Omit<AdminLeadType, "id"> & { id?: number };
 

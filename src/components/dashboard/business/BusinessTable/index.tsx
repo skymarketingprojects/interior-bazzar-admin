@@ -45,7 +45,12 @@ const BusinessTable = ({ filter }: { filter: BusinessFilterType }) => {
                             <td>{renderValue(business.id)}</td>
                             <td>{renderValue(business.joinAt)}</td>
                             <td>{renderValue(business.name)}</td>
-                            <td>{renderValue(business.plan)}</td>
+                            <td>
+                            {business.plan?.length
+                                ? business.plan.map(p => p.name).join(", ")
+                                : "--"}
+                            </td>
+
                             <td>
                                 {renderValue(business.assignedLeads)}
                             </td>
